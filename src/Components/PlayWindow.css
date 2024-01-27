@@ -1,0 +1,20 @@
+.play-window {
+  display: flex;
+  /* justify-content: space-between; */
+  padding: 100px;
+}
+
+.output-part {
+  width: 100%;
+}
+/*NOTE: might be more for the output-part after finished with the actual code*/
+.input-part {
+  width: 100%;
+}
+
+/* NOTE how to link? 
+.input-field {
+ border: "4px solid bisque",
+    borderRadius: "0.5em",
+    padding: "6px",
+  } */
