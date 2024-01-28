@@ -65,7 +65,6 @@ function PlayWindow() {
         inputCity={inputCity}
         handleInputChange={handleInputChange}
         handleCities={handleCities}
-        handleBtnSubmitClick={handleBtnSubmitClick}
       />
     </div>
   );

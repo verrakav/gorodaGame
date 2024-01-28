@@ -1,15 +1,3 @@
-<<<<<<< Updated upstream
-import React from "react";
-//a useState to set the initial message
-//and then change it to the ones from the parent?
-function OutputPart({
-  validationCity,
-  otherMessage,
-  submittedCities,
-  setSubmittedCities,
-  inputCity,
-}) {
-=======
 import React, { useState, useEffect } from "react";
 //NOTE: need some more styling with line height
 // and the position of the messages
@@ -17,8 +5,8 @@ function OutputPart({ submittedCities, inputCity }) {
   console.log(submittedCities);
   console.log(submittedCities.length);
 
-  const [responseCity, setResponseCity] = useState("");
   const [userCityMessage, setUserCityMessage] = useState("");
+  const [responseCity, setResponseCity] = useState("");
 
   useEffect(() => {
     const manageUserCityMessage = () => {
@@ -55,12 +43,11 @@ function OutputPart({ submittedCities, inputCity }) {
   //or this: https://developers.amadeus.com/
   // or a list to search: https://rapidapi.com/collection/city-data-api
 
->>>>>>> Stashed changes
   return (
     <div className="output-part">
       {inputCity}
-      {validationCity}
-      {otherMessage}
+      {userCityMessage}
+      {responseCity}
     </div>
   );
 }
