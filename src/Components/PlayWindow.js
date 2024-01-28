@@ -1,30 +1,73 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./PlayWindow.css";
 import InputPart from "./InputPart/InputPart";
 import OutputPart from "./OutputPart/OutputPart";
 
 function PlayWindow() {
+  // console.log("PlayWindow Rendered");
   const [inputCity, setInputCity] = useState("");
   const [submittedCities, setSubmittedCities] = useState([]);
-  const [validationCity, setValidationCity] = useState("");
-  const [otherMessage, setOtherMessage] = useState("");
+  //NOTE:the two lines below moved to OutputPart
+  // const [validationCity, setValidationCity] = useState("");
+  // const [otherMessage, setOtherMessage] = useState("");
 
-  // const handleInputChange = (event) => {
-  //   setInputCity(event.target.value);
-  // };
-
+  //NOTEthe problem was in this:
   // const handleBtnSubmitClick = () => {
   //   // alert("works!");
-  //   setInputCity("");
+  //setInputCity('') <- this cleared the field
+  //as a result an empty string was added to the array
   // };
 
+  //TODO: prevent from multiple re-rendering // this didn't seem to work
+  //lines below +     // debounceHandleInputChange(inputCity);
+  // function debounce(func, delay) {
+  //   let timer;
+  //   return function (...args) {
+  //     clearTimeout(timer);
+  //     timer = setTimeout(() => func(...args), delay);
+  //   };
+  // }
+
+  // const debounceHandleInputChange = debounce((inputCity) => {
+  //   console.log("debounced", inputCity);
+  //   // Make API request with the inputCity
+  //   // Perform input validation checks
+  // }, 50);
+
+  const handleInputChange = (event) => {
+    const inputCity = event.target.value;
+    setInputCity(inputCity);
+    // debounceHandleInputChange(inputCity);
+  };
+
+  const handleCities = (event) => {
+    //the default behavior of a form submission: refresh the page - interferes w/React state
+    event.preventDefault();
+    setSubmittedCities((prev) => [...prev, inputCity]);
+    setInputCity("");
+  };
+
+  //TODO: change this function to trigger API and array checks of the inputCity?
+  // const handleBtnSubmitClick = () => {
+  //   // alert("works!");
+  // };
+
+  // //NOTE: the only way I found to cl info
+  // useEffect(() => {
+  //   console.log("submitted:", submittedCities, "inputCity:", inputCity);
+  // }, [submittedCities, inputCity]);
+
+  //NOTE: API related
   // const handleCities = async (event) => {
   //   event.preventDefault();
 
-  //   // 1: check if inputCity is in submittedCities
-  //   if (submittedCities.includes(inputCity)) {
-  //     /*or should it be setValidationCity? */
-  //     setOtherMessage(`we've had it before, sorry`);
+  // //   // 1: check if inputCity is in submittedCities
+  // if (submittedCities.includes(inputCity)) {
+  //   /*or should it be setValidationCity? */
+  //   setOtherMessage(`we've had it before, sorry`);
+  // } else {
+  //   setOtherMessage("new city");
+  // }
   //   } else {
   //     try {
   //       //2: check if inputCity exists at all (API check)
@@ -73,15 +116,15 @@ function PlayWindow() {
   return (
     <div className="play-window">
       <OutputPart
-      // validationCity={validationCity}
-      // otherMessage={otherMessage}
-      // submittedCities={submittedCities}
-      // setSubmittedCities={setSubmittedCities}
+        // validationCity={validationCity}
+        // otherMessage={otherMessage}
+        submittedCities={submittedCities}
+        setSubmittedCities={setSubmittedCities}
       />
       <InputPart
         inputCity={inputCity}
-        // handleInputChange={handleInputChange}
-        // handleCities={handleCities}
+        handleInputChange={handleInputChange}
+        handleCities={handleCities}
         // handleBtnSubmitClick={handleBtnSubmitClick}
       />
     </div>

@@ -23,7 +23,7 @@ function InputPart({
           placeholder="Name a city"
         ></input>
         {/* <Buttons /> */}
-        <BtnSubmit onClick={handleBtnSubmitClick} />
+        <BtnSubmit />
         <BtnGiveUp />
       </form>
     </div>

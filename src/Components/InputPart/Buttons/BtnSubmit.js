@@ -1,9 +1,12 @@
 import React from "react";
 import "./Buttons.css";
 
-function BtnSubmit({ onClick }) {
+function BtnSubmit({ handleCities }) {
   return (
-    <button className="btn-submit" onClick={onClick}>
+    <button
+      className="btn-submit"
+      //  onClick={handleCities}
+    >
       Gorod{" "}
     </button>
   );
