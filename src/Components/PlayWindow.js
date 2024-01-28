@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./PlayWindow.css";
 import InputPart from "./InputPart/InputPart";
-import OutputPart from "./OutputPart";
+import OutputPart from "./OutputPart/OutputPart";
 
 function PlayWindow() {
   const [inputCity, setInputCity] = useState("");

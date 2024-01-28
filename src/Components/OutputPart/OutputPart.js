@@ -6,10 +6,11 @@ function OutputPart({
   otherMessage,
   submittedCities,
   setSubmittedCities,
+  inputCity,
 }) {
   return (
     <div className="output-part">
-      Working on this
+      {inputCity}
       {validationCity}
       {otherMessage}
     </div>

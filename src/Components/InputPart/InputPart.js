@@ -1,8 +1,9 @@
 import React from "react";
-import ScoreKeeper from "../ScoreKeeper";
+import "./InputPart.css";
+import ScoreKeeper from "./ScoreKeeper/ScoreKeeper";
 // import Buttons from "./Buttons";
-import BtnSubmit from "./BtnSubmit";
-import BtnGiveUp from "./BtnGiveUp";
+import BtnSubmit from "./Buttons/BtnSubmit";
+import BtnGiveUp from "./Buttons/BtnGiveUp";
 
 function InputPart({
   inputCity,
@@ -10,12 +11,6 @@ function InputPart({
   handleCities,
   handleBtnSubmitClick,
 }) {
-  const inputFiledStyle = {
-    border: "4px solid bisque",
-    borderRadius: "0.5em",
-    padding: "6px",
-  };
-
   return (
     <div className="input-part">
       <ScoreKeeper />
@@ -26,7 +21,6 @@ function InputPart({
           onChange={handleInputChange}
           value={inputCity} /*without it the field did't clear */
           placeholder="Name a city"
-          style={inputFiledStyle}
         ></input>
         {/* <Buttons /> */}
         <BtnSubmit onClick={handleBtnSubmitClick} />

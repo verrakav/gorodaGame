@@ -1,7 +1,7 @@
 import "./App.css";
-import HeaderRules from "./Components/HeaderRules";
+import HeaderRules from "./Components/HeaderFooter/HeaderRules";
 import PlayWindow from "./Components/PlayWindow";
-import Footer from "./Components/Footer";
+import Footer from "./Components/HeaderFooter/Footer";
 
 function App() {
   return (
