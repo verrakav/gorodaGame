@@ -5,12 +5,7 @@ import ScoreKeeper from "./ScoreKeeper/ScoreKeeper";
 import BtnSubmit from "./Buttons/BtnSubmit";
 import BtnGiveUp from "./Buttons/BtnGiveUp";
 
-function InputPart({
-  inputCity,
-  handleInputChange,
-  handleCities,
-  handleBtnSubmitClick,
-}) {
+function InputPart({ inputCity, handleInputChange, handleCities }) {
   return (
     <div className="input-part">
       <ScoreKeeper />

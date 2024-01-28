@@ -6,13 +6,38 @@ import OutputPart from "./OutputPart/OutputPart";
 function PlayWindow() {
   const [inputCity, setInputCity] = useState("");
   const [submittedCities, setSubmittedCities] = useState([]);
+<<<<<<< Updated upstream
   const [validationCity, setValidationCity] = useState("");
   const [otherMessage, setOtherMessage] = useState("");
+=======
+
+  //NOTEthe problem was in this:
+  // const handleBtnSubmitClick = () => {
+  //   // alert("works!");
+  //setInputCity('') <- this cleared the field
+  //as a result an empty string was added to the array
+  // };
+
+  //TODO: prevent from multiple re-rendering // this didn't seem to work
+  //lines below +     // debounceHandleInputChange(inputCity);
+  // function debounce(func, delay) {
+  //   let timer;
+  //   return function (...args) {
+  //     clearTimeout(timer);
+  //     timer = setTimeout(() => func(...args), delay);
+  //   };
+  // }
+
+  // const debounceHandleInputChange = debounce((inputCity) => {
+  //   console.log("debounced", inputCity);
+  // }, 500);
+>>>>>>> Stashed changes
 
   const handleInputChange = (event) => {
     setInputCity(event.target.value);
   };
 
+<<<<<<< Updated upstream
   const handleBtnSubmitClick = () => {
     // alert("works!");
     setInputCity("");
@@ -70,6 +95,26 @@ function PlayWindow() {
     }
   };
 
+=======
+  const handleCities = (event) => {
+    //the default behavior of a form submission: refresh the page - interferes w/React state?
+    event.preventDefault();
+    setSubmittedCities((prev) => [...prev, inputCity]);
+    setInputCity("");
+  };
+
+  //TODO: change this function to trigger inputCity checks against API and array
+  //and pass it as a prop?
+  // const handleBtnSubmitClick = () => {
+  // //API related code?
+  // };
+
+  // //NOTE: how it can cl
+  // useEffect(() => {
+  //   console.log("submitted:", submittedCities, "inputCity:", inputCity);
+  // }, [submittedCities, inputCity]);
+
+>>>>>>> Stashed changes
   return (
     <div className="play-window">
       <OutputPart

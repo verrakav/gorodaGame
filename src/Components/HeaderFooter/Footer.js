@@ -1,17 +1,11 @@
 import React from "react";
+import "./Footer.css";
 
 function Footer() {
-  const footerStyle = {
-    position: "fixed",
-    bottom: 0,
-    left: 0,
-    width: "100%",
-    padding: "10px",
-    textAlign: "left",
-    backgroundColor: "rgb(39, 54, 39)",
-    fontSize: "10px",
-  };
-  return <footer style={footerStyle}>I'm the footer</footer>;
+  return <footer>I'm the footer</footer>;
 }
 
 export default Footer;
+
+//TODO: final touch: inspired by Babooshka <3
+//a very final touch
