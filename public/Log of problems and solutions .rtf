@@ -1,15 +1,17 @@
 {\rtf1\ansi\ansicpg1252\cocoartf2758
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fswiss\fcharset0 Helvetica-Oblique;
-\f3\fswiss\fcharset0 Helvetica-Bold;\f4\fnil\fcharset0 Monaco;\f5\fnil\fcharset0 HelveticaNeue;
-\f6\fnil\fcharset0 Menlo-Bold;\f7\fnil\fcharset0 Menlo-Regular;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red42\green49\blue64;\red174\green122\blue247;
-\red30\green31\blue41;\red72\green255\blue104;\red246\green246\blue239;\red252\green93\blue186;\red124\green228\blue252;
-\red253\green170\blue90;}
-{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c21569\c25490\c31765;\cssrgb\c74118\c57647\c97647;
-\cssrgb\c15686\c16471\c21176;\cssrgb\c31373\c98039\c48235;\cssrgb\c97255\c97255\c94902;\cssrgb\c100000\c47451\c77647;\cssrgb\c54510\c91373\c99216;
-\cssrgb\c100000\c72157\c42353;}
-{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
-{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fmodern\fcharset0 Courier;
+\f3\fswiss\fcharset0 Helvetica-Oblique;\f4\fnil\fcharset0 Monaco;\f5\fnil\fcharset0 HelveticaNeue;
+\f6\fswiss\fcharset0 Helvetica-BoldOblique;\f7\fnil\fcharset0 Menlo-Regular;\f8\fnil\fcharset0 Menlo-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red42\green49\blue64;\red40\green42\blue46;
+\red236\green242\blue255;\red174\green122\blue247;\red30\green31\blue41;\red72\green255\blue104;\red246\green246\blue239;
+\red252\green93\blue186;\red124\green228\blue252;\red253\green170\blue90;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c21569\c25490\c31765;\cssrgb\c20784\c21961\c23529;
+\cssrgb\c94118\c96078\c100000;\cssrgb\c74118\c57647\c97647;\cssrgb\c15686\c16471\c21176;\cssrgb\c31373\c98039\c48235;\cssrgb\c97255\c97255\c94902;
+\cssrgb\c100000\c47451\c77647;\cssrgb\c54510\c91373\c99216;\cssrgb\c100000\c72157\c42353;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid101\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
 \paperw11900\paperh16840\margl1440\margr1440\vieww11880\viewh13980\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc\partightenfactor0
 
@@ -24,7 +26,9 @@
 \cf0 ##Questions and Doubts##\
 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 - component structure ok or too nested?\
+\cf0 - component structure ok or too nested? 
+\f1\b Answer from react.dev: 
+\f0\b0 up to 3 or 4 ok\
 \
 - when I want multiple component to communicate between each other, I pass the necessary functions to their parent component so they\'92re accessible by all children?\
 \
@@ -39,7 +43,7 @@
 - Array.isArray(arrToCheck) - specifically check arr\
 \
 \'97 this error: 
-\f1\fs22 \expnd0\expndtw0\kerning0
+\f2\fs22 \expnd0\expndtw0\kerning0
 \outl0\strokewidth0 \strokec2 Error: error:0308010C:digital envelope routines::unsupported\
 \pard\pardeftab720\partightenfactor0
 \cf0     at new Hash (node:internal/crypto/hash:67:19)\
@@ -55,19 +59,19 @@
 /Users/user/Programming Documents/WebServer/untitled/node_modules/react-scripts/scripts/start.js:19\
   thr 
 \f0\fs28 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 Stackoverflow says to downgrade Node to v.16 - I fixed it by 
-\f2\i audit fix \'97force
+\f3\i audit fix \'97force
 \f0\i0 \
 PS: the crash after installing popupjs\
 \
 - with Popup component which is imported (should be placed as up the tree as possible) using the <span> tag didn\'92t create a box - <p> did
-\f1\fs26 \expnd0\expndtw0\kerning0
+\f2\fs26 \expnd0\expndtw0\kerning0
 \outl0\strokewidth0 \strokec2 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f0\fs28 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
 \
 
-\f3\b \uc0\u1044 \u1083 \u1103  \u1086 \u1089 \u1086 \u1073 \u1086  \u1086 \u1076 \u1072 \u1088 \u1105 \u1085 \u1085 \u1099 \u1093 : 
+\f1\b \uc0\u1044 \u1083 \u1103  \u1086 \u1089 \u1086 \u1073 \u1086  \u1086 \u1076 \u1072 \u1088 \u1105 \u1085 \u1085 \u1099 \u1093 : 
 \f4\b0 \cf3 	\
 \'95	\expnd0\expndtw0\kerning0
 \outl0\strokewidth0 \strokec3 useState
@@ -89,88 +93,106 @@ PS: the crash after installing popupjs\
 \
 - https://favicon.io/favicon-generator/\
 \
-\
-\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl336\slmult1\pardirnatural\qc\partightenfactor0
+
+\f6\i\b\fs36 \cf0 \ul \ulc0 \uc0\u1063 \u1090 \u1086  \u1089 \u1076 \u1077 \u1083 \u1072 \u1090 \u1100  \u1089  API:
+\f0\i0\b0\fs28 \ulnone \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa600\partightenfactor0
+\ls2\ilvl0
+\f7\fs32\fsmilli16200 \cf4 \cb5 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 src/api.js
+\f5\fs36 \cb1 \'a0- You\'92ll probably need to make calls to a backend API at some point. Put all that code here. If it gets too unwieldy in one file, make a\'a0
+\f7\fs32\fsmilli16200 \cb5 src/api
+\f5\fs36 \cb1 \'a0directory and put the area-specific API files under there \'96 like\'a0
+\f7\fs32\fsmilli16200 \cb5 userApi.js
+\f5\fs36 \cb1 ,\'a0
+\f7\fs32\fsmilli16200 \cb5 productApi.js
+\f5\fs36 \cb1 , etc.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc\partightenfactor0
+
+\f0\fs28 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc\partightenfactor0
 \cf0  Deleted from README\
 \pard\pardeftab720\partightenfactor0
 
-\f6\b\fs24 \cf4 \cb5 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec4 ### \cf6 \strokec6 `npm test`
-\f7\b0 \cf7 \cb1 \strokec7 \
+\f8\b\fs24 \cf6 \cb7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 ### \cf8 \strokec8 `npm test`
+\f7\b0 \cf9 \cb1 \strokec9 \
 \
-\cb5 Launches the test runner in the interactive watch mode.\\\cb1 \
-\cb5 See the section about [\cf8 \strokec8 running tests\cf7 \strokec7 ](\cf9 \ul \ulc9 \strokec9 https://facebook.github.io/create-react-app/docs/running-tests\cf7 \ulnone \strokec7 ) for more information.\cb1 \
-\
-
-\f6\b \cf4 \cb5 \strokec4 ### \cf6 \strokec6 `npm run build`
-\f7\b0 \cf7 \cb1 \strokec7 \
-\
-\cb5 Builds the app for production to the \cf6 \strokec6 `build`\cf7 \strokec7  folder.\\\cb1 \
-\cb5 It correctly bundles React in production mode and optimizes the build for the best performance.\cb1 \
-\
-\cb5 The build is minified and the filenames include the hashes.\\\cb1 \
-\cb5 Your app is ready to be deployed!\cb1 \
-\
-\cb5 See the section about [\cf8 \strokec8 deployment\cf7 \strokec7 ](\cf9 \ul \ulc9 \strokec9 https://facebook.github.io/create-react-app/docs/deployment\cf7 \ulnone \strokec7 ) for more information.\cb1 \
+\cb7 Launches the test runner in the interactive watch mode.\\\cb1 \
+\cb7 See the section about [\cf10 \strokec10 running tests\cf9 \strokec9 ](\cf11 \ul \ulc11 \strokec11 https://facebook.github.io/create-react-app/docs/running-tests\cf9 \ulnone \strokec9 ) for more information.\cb1 \
 \
 
-\f6\b \cf4 \cb5 \strokec4 ### \cf6 \strokec6 `npm run eject`
-\f7\b0 \cf7 \cb1 \strokec7 \
+\f8\b \cf6 \cb7 \strokec6 ### \cf8 \strokec8 `npm run build`
+\f7\b0 \cf9 \cb1 \strokec9 \
+\
+\cb7 Builds the app for production to the \cf8 \strokec8 `build`\cf9 \strokec9  folder.\\\cb1 \
+\cb7 It correctly bundles React in production mode and optimizes the build for the best performance.\cb1 \
+\
+\cb7 The build is minified and the filenames include the hashes.\\\cb1 \
+\cb7 Your app is ready to be deployed!\cb1 \
+\
+\cb7 See the section about [\cf10 \strokec10 deployment\cf9 \strokec9 ](\cf11 \ul \ulc11 \strokec11 https://facebook.github.io/create-react-app/docs/deployment\cf9 \ulnone \strokec9 ) for more information.\cb1 \
 \
 
-\f6\b \cf10 \cb5 \strokec10 **Note: this is a one-way operation. Once you \cf6 \strokec6 `eject`\cf10 \strokec10 , you can't go back!**
-\f7\b0 \cf7 \cb1 \strokec7 \
-\
-\cb5 If you aren't satisfied with the build tool and configuration choices, you can \cf6 \strokec6 `eject`\cf7 \strokec7  at any time. This command will remove the single build dependency from your project.\cb1 \
-\
-\cb5 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except \cf6 \strokec6 `eject`\cf7 \strokec7  will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.\cb1 \
-\
-\cb5 You don't have to ever use \cf6 \strokec6 `eject`\cf7 \strokec7 . The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.\cb1 \
+\f8\b \cf6 \cb7 \strokec6 ### \cf8 \strokec8 `npm run eject`
+\f7\b0 \cf9 \cb1 \strokec9 \
 \
 
-\f6\b \cf4 \cb5 \strokec4 ## Learn More
-\f7\b0 \cf7 \cb1 \strokec7 \
+\f8\b \cf12 \cb7 \strokec12 **Note: this is a one-way operation. Once you \cf8 \strokec8 `eject`\cf12 \strokec12 , you can't go back!**
+\f7\b0 \cf9 \cb1 \strokec9 \
 \
-\cb5 You can learn more in the [\cf8 \strokec8 Create React App documentation\cf7 \strokec7 ](\cf9 \ul \ulc9 \strokec9 https://facebook.github.io/create-react-app/docs/getting-started\cf7 \ulnone \strokec7 ).\cb1 \
+\cb7 If you aren't satisfied with the build tool and configuration choices, you can \cf8 \strokec8 `eject`\cf9 \strokec9  at any time. This command will remove the single build dependency from your project.\cb1 \
 \
-\cb5 To learn React, check out the [\cf8 \strokec8 React documentation\cf7 \strokec7 ](\cf9 \ul \ulc9 \strokec9 https://reactjs.org/\cf7 \ulnone \strokec7 ).\cb1 \
+\cb7 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except \cf8 \strokec8 `eject`\cf9 \strokec9  will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.\cb1 \
 \
-
-\f6\b \cf4 \cb5 \strokec4 ### Code Splitting
-\f7\b0 \cf7 \cb1 \strokec7 \
-\
-\cb5 This section has moved here: [\cf8 \strokec8 https://facebook.github.io/create-react-app/docs/code-splitting\cf7 \strokec7 ](\cf9 \ul \ulc9 \strokec9 https://facebook.github.io/create-react-app/docs/code-splitting\cf7 \ulnone \strokec7 )\cb1 \
+\cb7 You don't have to ever use \cf8 \strokec8 `eject`\cf9 \strokec9 . The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.\cb1 \
 \
 
-\f6\b \cf4 \cb5 \strokec4 ### Analyzing the Bundle Size
-\f7\b0 \cf7 \cb1 \strokec7 \
+\f8\b \cf6 \cb7 \strokec6 ## Learn More
+\f7\b0 \cf9 \cb1 \strokec9 \
 \
-\cb5 This section has moved here: [\cf8 \strokec8 https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size\cf7 \strokec7 ](\cf9 \ul \ulc9 \strokec9 https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size\cf7 \ulnone \strokec7 )\cb1 \
+\cb7 You can learn more in the [\cf10 \strokec10 Create React App documentation\cf9 \strokec9 ](\cf11 \ul \ulc11 \strokec11 https://facebook.github.io/create-react-app/docs/getting-started\cf9 \ulnone \strokec9 ).\cb1 \
 \
-
-\f6\b \cf4 \cb5 \strokec4 ### Making a Progressive Web App
-\f7\b0 \cf7 \cb1 \strokec7 \
-\
-\cb5 This section has moved here: [\cf8 \strokec8 https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app\cf7 \strokec7 ](\cf9 \ul \ulc9 \strokec9 https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app\cf7 \ulnone \strokec7 )\cb1 \
+\cb7 To learn React, check out the [\cf10 \strokec10 React documentation\cf9 \strokec9 ](\cf11 \ul \ulc11 \strokec11 https://reactjs.org/\cf9 \ulnone \strokec9 ).\cb1 \
 \
 
-\f6\b \cf4 \cb5 \strokec4 ### Advanced Configuration
-\f7\b0 \cf7 \cb1 \strokec7 \
+\f8\b \cf6 \cb7 \strokec6 ### Code Splitting
+\f7\b0 \cf9 \cb1 \strokec9 \
 \
-\cb5 This section has moved here: [\cf8 \strokec8 https://facebook.github.io/create-react-app/docs/advanced-configuration\cf7 \strokec7 ](\cf9 \ul \ulc9 \strokec9 https://facebook.github.io/create-react-app/docs/advanced-configuration\cf7 \ulnone \strokec7 )\cb1 \
-\
-
-\f6\b \cf4 \cb5 \strokec4 ### Deployment
-\f7\b0 \cf7 \cb1 \strokec7 \
-\
-\cb5 This section has moved here: [\cf8 \strokec8 https://facebook.github.io/create-react-app/docs/deployment\cf7 \strokec7 ](\cf9 \ul \ulc9 \strokec9 https://facebook.github.io/create-react-app/docs/deployment\cf7 \ulnone \strokec7 )\cb1 \
+\cb7 This section has moved here: [\cf10 \strokec10 https://facebook.github.io/create-react-app/docs/code-splitting\cf9 \strokec9 ](\cf11 \ul \ulc11 \strokec11 https://facebook.github.io/create-react-app/docs/code-splitting\cf9 \ulnone \strokec9 )\cb1 \
 \
 
-\f6\b \cf4 \cb5 \strokec4 ### \cf6 \strokec6 `npm run build`\cf4 \strokec4  fails to minify
-\f7\b0 \cf7 \cb1 \strokec7 \
+\f8\b \cf6 \cb7 \strokec6 ### Analyzing the Bundle Size
+\f7\b0 \cf9 \cb1 \strokec9 \
 \
-\cb5 This section has moved here: [\cf8 \strokec8 https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify\cf7 \strokec7 ](\cf9 \ul \ulc9 \strokec9 https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify\cf7 \ulnone \strokec7 )\cb1 \
+\cb7 This section has moved here: [\cf10 \strokec10 https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size\cf9 \strokec9 ](\cf11 \ul \ulc11 \strokec11 https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size\cf9 \ulnone \strokec9 )\cb1 \
+\
+
+\f8\b \cf6 \cb7 \strokec6 ### Making a Progressive Web App
+\f7\b0 \cf9 \cb1 \strokec9 \
+\
+\cb7 This section has moved here: [\cf10 \strokec10 https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app\cf9 \strokec9 ](\cf11 \ul \ulc11 \strokec11 https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app\cf9 \ulnone \strokec9 )\cb1 \
+\
+
+\f8\b \cf6 \cb7 \strokec6 ### Advanced Configuration
+\f7\b0 \cf9 \cb1 \strokec9 \
+\
+\cb7 This section has moved here: [\cf10 \strokec10 https://facebook.github.io/create-react-app/docs/advanced-configuration\cf9 \strokec9 ](\cf11 \ul \ulc11 \strokec11 https://facebook.github.io/create-react-app/docs/advanced-configuration\cf9 \ulnone \strokec9 )\cb1 \
+\
+
+\f8\b \cf6 \cb7 \strokec6 ### Deployment
+\f7\b0 \cf9 \cb1 \strokec9 \
+\
+\cb7 This section has moved here: [\cf10 \strokec10 https://facebook.github.io/create-react-app/docs/deployment\cf9 \strokec9 ](\cf11 \ul \ulc11 \strokec11 https://facebook.github.io/create-react-app/docs/deployment\cf9 \ulnone \strokec9 )\cb1 \
+\
+
+\f8\b \cf6 \cb7 \strokec6 ### \cf8 \strokec8 `npm run build`\cf6 \strokec6  fails to minify
+\f7\b0 \cf9 \cb1 \strokec9 \
+\
+\cb7 This section has moved here: [\cf10 \strokec10 https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify\cf9 \strokec9 ](\cf11 \ul \ulc11 \strokec11 https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify\cf9 \ulnone \strokec9 )\cb1 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f0\fs28 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \

@@ -20,8 +20,6 @@ function PopupWindow() {
           How to play?
         </a>
       }
-      //should dim the background
-      modal
     >
       {/*NOTE: this is function as a cild (render prop) 0_o help */}
       {/* anonymous function passed as a prop with the argument that is an action(funuctionality)

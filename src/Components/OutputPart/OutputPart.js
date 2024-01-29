@@ -29,6 +29,8 @@ function OutputPart({ submittedCities, inputCity }) {
 
     manageUserCityMessage();
   }, [inputCity, submittedCities]);
+  //NOTE: define API calls in APIrelated.js,
+  // then import it here to pass in inputCity
 
   //TODO: 1. inputCity: validation through API; (inputCity true or false)
   // 2. responseCity: API request;
