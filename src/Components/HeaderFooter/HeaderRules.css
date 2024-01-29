@@ -2,13 +2,40 @@
   display: flex;
   width: 100%;
   justify-content: center;
-  font-size: 36px;
-  padding-bottom: 30px;
+  font-size: 2.26rem;
+  padding-bottom: 1.875rem;
 }
 
-.popup-rules {
+.popup-trigger {
   display: flex;
   width: 100%;
   justify-content: end;
-  padding: 20px;
+  padding: 1.25rem;
+}
+
+.popup-window {
+  display: flex;
+  height: 21.875rem;
+  width: 25rem;
+  background-color: rgb(39, 54, 39);
+  border: 3px outset;
+  border-color: bisque;
+}
+
+.icon {
+  position: absolute;
+  top: 1.25rem;
+  right: 0.625rem;
+  height: 1.875rem;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+p {
+  align-items: center;
+  line-height: 1.28rem;
+  width: 100%;
+  padding: 0.9375rem;
 }
