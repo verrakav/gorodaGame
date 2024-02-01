@@ -5,7 +5,6 @@ import CIcon from "@coreui/icons-react";
 import * as icon from "@coreui/icons";
 
 function PopupWindow() {
-  //NOTE: below is the working variant
   const [open, setOpen] = useState(false);
   const closePop = () => {
     setOpen(false);
@@ -33,7 +32,7 @@ here close comes from the library, right? */}
               close();
             }}
           />
-          The game is based on the first and the last letters of citites. <br />
+          The game is based on city names! <br />
           If the first player says: Melbourne, the second player should think of
           a city starting with an 'E' - Edinburgh - then the next should start
           with an 'H'!

@@ -1,3 +1,6 @@
+//alllows access the hidden variable here
+const apiKey = process.env.REACT_APP_API_KEY;
+const apiHost = process.env.REACT_APP_API_HOST;
 //NOTE: took from the copy-book
 // fetch("link").then((response) => {
 //   if (response.ok) {
@@ -6,16 +9,17 @@
 //   throw new Error("request failed");
 // }, networkError => console.log(networkError.message)).then(json.Response) => {"code to do with the response"};
 
-//NOTE: older code version, googled
+// older code version, googled
 //supposed to check if there's such a city
 const apiCallValidate = (city) => {
-    try {
-const apiResponse = await fetch(
-  `https://nominatim.openstreetmap.org/search?q=${city}&format=json&limit=1`
+  const apiResponse = fetch(
+    //switched to a different API: https://rapidapi.com/wirefreethought/api/geodb-cities/
+    //the new one should return cities with 1 letter + further ideas
+    "https://api.amadeus.net/v1/reference-data/locations/cities/keyword=PARIS"
   );
-  const apiData = await apiResponse.json();
-  return apiData;
-    }
+  //the endpoint
+  const cityExists = apiResponse.json();
+  return cityExists;
 };
 
-export default apiCallValidate
+// export default apiCallValidate;
