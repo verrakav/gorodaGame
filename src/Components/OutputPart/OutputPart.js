@@ -1,49 +1,19 @@
 import React, { useState, useEffect } from "react";
 import apiCallValidate from "../../utils/APIrelated";
 //alllows access the local variable here
-const apiKey = process.env.REACT_APP_API_KEY;
-const apiHost = process.env.REACT_APP_API_HOST;
+//FIXME: somehow they still got into github
+// const apiKey = process.env.REACT_APP_API_KEY;
+// const apiHost = process.env.REACT_APP_API_HOST;
+const apiKey = "a56f2689e9msh374ad488f32c171p1726f9jsnc73f34e19b3f";
+const apiHost = "wft-geo-db.p.rapidapi.com";
 
 //TODO: need some more styling with line height
 // and the position of the messages (once they both show)
 
 function OutputPart({ submittedCities, inputCity }) {
-  //FIXME: the arr gets printed 4 times
+  //FIXME: the arr gets printed 4 times (x2 installHook; x2OutputPart)
   console.log(submittedCities);
   // console.log(submittedCities.length);
-
-  //FAILED1: move API calls to APIrelated.js,
-  // then import it here to pass in inputCity
-  // const fetchCity = async () => {
-  //   const url =
-  //     "https://wft-geo-db.p.rapidapi.com/v1/geo/cities?types=CITY&minPopulation=20000&namePrefix=L&limit=1";
-  //   const options = {
-  //     method: "GET",
-  //     headers: {
-  //       "X-RapidAPI-Key": apiKey,
-  //       "X-RapidAPI-Host": apiHost,
-  //     },
-  //   };
-  //   try {
-  //     const response = await fetch(url, options);
-  //     const result = await response.json();
-  //     console.log(result);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-  // fetchCity();
-
-  //FAILED2:
-  // useEffect(() => {
-  //   setResponseCity("ПРИВЕТ!");
-  //   const fetchCity = async () => {
-  //     const resultCity = await fetch(url, options);
-  //     resultCity.json().then((json) => setResponseCity(json.city));
-  //   };
-  //   fetchCity();
-  //   // console.log(resultCity);
-  // }, []);
 
   const [userCityMessage, setUserCityMessage] = useState("");
   const [responseCity, setResponseCity] = useState("");
@@ -82,6 +52,31 @@ function OutputPart({ submittedCities, inputCity }) {
   //API to use: https://nominatim.org/release-docs/latest/api/Overview/
   //or this: https://developers.amadeus.com/
   // or a list to search: https://rapidapi.com/collection/city-data-api
+
+  // working API
+  //TODO: figure what should go in the url
+  useEffect(() => {
+    const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?types=CITY&minPopulation=20000&namePrefix=${inputCity}in&limit=1`;
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": apiKey,
+        "X-RapidAPI-Host": apiHost,
+      },
+    };
+    setResponseCity("ПРИВЕТ!");
+    //FIXME: the value set above instantly changes once pages loads
+    //the function is called instantly and changes the word - how to fix?
+    const fetchCity = async () => {
+      const resultCity = await fetch(url, options);
+      //can't read the returned value and erases 'ПРИВЕТ'?
+      resultCity.json().then((json) => setResponseCity(json.city));
+      // setResponseCity(json.city)
+      // console.log(options.headers);
+    };
+    fetchCity();
+    // console.log(resultCity);
+  }, []);
 
   return (
     <div className="output-part">
