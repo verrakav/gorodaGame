@@ -4,14 +4,14 @@ import apiCallValidate from "../../utils/APIrelated";
 //FIXME: somehow they still got into github
 // const apiKey = process.env.REACT_APP_API_KEY;
 // const apiHost = process.env.REACT_APP_API_HOST;
-const apiKey = "a56f2689e9msh374ad488f32c171p1726f9jsnc73f34e19b3f";
-const apiHost = "wft-geo-db.p.rapidapi.com";
+// const apiKey = "a56f2689e9msh374ad488f32c171p1726f9jsnc73f34e19b3f";
+// const apiHost = "wft-geo-db.p.rapidapi.com";
 
 //TODO: need some more styling with line height
 // and the position of the messages (once they both show)
 
-function OutputPart({ submittedCities, inputCity }) {
-  //FIXME: the arr gets printed 4 times (x2 installHook; x2OutputPart)
+function OutputPart({ submittedCities, inputCity, otherMessage }) {
+  //FIXME: the arr gets printed 3 times (OutputPart)
   console.log(submittedCities);
   // console.log(submittedCities.length);
 
@@ -20,7 +20,7 @@ function OutputPart({ submittedCities, inputCity }) {
   //NOTE: responsible for printing the inputCity and checking if used before
   useEffect(() => {
     const manageUserCityMessage = () => {
-      //store in consts here for convenience
+      //store here for convenience
       const lastIdx = submittedCities.length - 1;
       const lastCity = submittedCities[submittedCities.length - 1];
 
@@ -32,7 +32,8 @@ function OutputPart({ submittedCities, inputCity }) {
         submittedCities.indexOf(lastCity) !== lastIdx
       ) {
         setUserCityMessage(`${lastCity} has been used before`);
-      } /* if (validation from api) */ else {
+      } else {
+        /* if (validation from api) */
         setUserCityMessage(`You say: ${lastCity}`);
       }
     };
@@ -55,35 +56,40 @@ function OutputPart({ submittedCities, inputCity }) {
 
   // working API
   //TODO: figure what should go in the url
-  useEffect(() => {
-    const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?types=CITY&minPopulation=20000&namePrefix=${inputCity}in&limit=1`;
-    const options = {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": apiKey,
-        "X-RapidAPI-Host": apiHost,
-      },
-    };
-    setResponseCity("ПРИВЕТ!");
-    //FIXME: the value set above instantly changes once pages loads
-    //the function is called instantly and changes the word - how to fix?
-    const fetchCity = async () => {
-      const resultCity = await fetch(url, options);
-      //can't read the returned value and erases 'ПРИВЕТ'?
-      resultCity.json().then((json) => setResponseCity(json.city));
-      // setResponseCity(json.city)
-      // console.log(options.headers);
-    };
-    fetchCity();
-    // console.log(resultCity);
-  }, []);
+  //FIXME: moved to BtnSubmot:
+  // useEffect(() => {
+  //   console.log("fetching city:", inputCity);
+  //   const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?types=CITY&minPopulation=20000&namePrefix=${inputCity}in&limit=1`;
+  //   const options = {
+  //     method: "GET",
+  //     headers: {
+  //       "X-RapidAPI-Key": apiKey,
+  //       "X-RapidAPI-Host": apiHost,
+  //     },
+  //   };
+  //   //FIXME: the value set above instantly changes once pages loads
+  //   //the function is called instantly and changes the word - how to fix?
+  //   const fetchCity = async () => {
+  //     const resultCity = await fetch(url, options);
+  //     //can't read the returned value and erases 'ПРИВЕТ'?
+  //     console.log(resultCity);
+  //     resultCity.json().then((json) => setResponseCity(json.city));
+  //     // setResponseCity(json.city);
+  //     // console.log(options.headers);
+  //   };
+  //   fetchCity();
+  //   // console.log(resultCity);
+  // }, [inputCity]);
 
   return (
     <div className="output-part">
       <div className="userCity">
         {inputCity} {userCityMessage}
       </div>
-      <div className="responseCity"> {responseCity}</div>
+      <div className="responseCity">
+        {responseCity}
+        {otherMessage}
+      </div>
     </div>
   );
 }

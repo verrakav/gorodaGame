@@ -5,9 +5,17 @@ import ScoreKeeper from "./ScoreKeeper/ScoreKeeper";
 import BtnSubmit from "./Buttons/BtnSubmit";
 import BtnGiveUp from "./Buttons/BtnGiveUp";
 
-//TODO: sort out what happens to the props for the btnSubmit: cur version the right one?
-//the game works without btnSubmit props
-function InputPart({ inputCity, handleInputChange, handleCities }) {
+//ASK: shorthannd for all props? ...props and then props.inputCity?
+function InputPart({
+  inputCity,
+  setInputCity,
+  handleCities,
+  handleInputChange,
+  submittedCities,
+  setSubmittedCities,
+  validationCity,
+  setValidationCity,
+}) {
   return (
     <div className="input-part">
       <ScoreKeeper />
@@ -22,7 +30,16 @@ function InputPart({ inputCity, handleInputChange, handleCities }) {
         {/* <Buttons /> */}
         <BtnSubmit handleCities={handleCities} />
       </form>
-      <BtnGiveUp />
+      <BtnGiveUp
+        inputCity={inputCity}
+        setInputCity={setInputCity}
+        submittedCities={submittedCities}
+        setSubmittedCities={setSubmittedCities}
+        validationCity={validationCity}
+        setValidationCity={setValidationCity}
+        handleInputChange={handleInputChange}
+        handleCities={handleCities}
+      />
     </div>
   );
 }

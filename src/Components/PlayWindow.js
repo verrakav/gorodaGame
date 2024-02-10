@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import "./PlayWindow.css";
 import InputPart from "./InputPart/InputPart";
 import OutputPart from "./OutputPart/OutputPart";
+// import { debounce } from "lodash";
 
 function PlayWindow() {
   const [inputCity, setInputCity] = useState("");
@@ -17,20 +18,6 @@ function PlayWindow() {
   //as a result an empty string was added to the array
   // };
 
-  //TODO: prevent from multiple re-rendering // this didn't seem to work
-  //lines below +     // debounceHandleInputChange(inputCity);
-  // function debounce(func, delay) {
-  //   let timer;
-  //   return function (...args) {
-  //     clearTimeout(timer);
-  //     timer = setTimeout(() => func(...args), delay);
-  //   };
-  // }
-
-  // const debounceHandleInputChange = debounce((inputCity) => {
-  //   console.log("debounced", inputCity);
-  // }, 500);
-
   const handleInputChange = (event) => {
     setInputCity(event.target.value);
   };
@@ -38,7 +25,12 @@ function PlayWindow() {
   const handleCities = (event) => {
     //the default behavior of a form submission: refresh the page - interferes w/React state?
     event.preventDefault();
-    setSubmittedCities((prev) => [...prev, inputCity]);
+    if (!inputCity) {
+      alert("Choose a city");
+    } else {
+      //callback func to ensure all prev values are stored
+      setSubmittedCities((prev) => [...prev, inputCity]);
+    }
     setInputCity("");
   };
 
@@ -47,11 +39,6 @@ function PlayWindow() {
   // const handleBtnSubmitClick = () => {
   // //API related code?
   // };
-
-  // //NOTE: how it can cl
-  // useEffect(() => {
-  //   console.log("submitted:", submittedCities, "inputCity:", inputCity);
-  // }, [submittedCities, inputCity]);
 
   return (
     <div className="play-window">
@@ -63,6 +50,11 @@ function PlayWindow() {
       />
       <InputPart
         inputCity={inputCity}
+        setInputCity={setInputCity}
+        submittedCities={submittedCities}
+        setSubmittedCities={setSubmittedCities}
+        validationCity={validationCity}
+        setValidationCity={setValidationCity}
         handleInputChange={handleInputChange}
         handleCities={handleCities}
       />
