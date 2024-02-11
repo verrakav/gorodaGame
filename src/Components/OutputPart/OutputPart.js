@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import apiCallValidate from "../../utils/APIrelated";
+import "../PlayWindow.css";
 //alllows access the local variable here
 //FIXME: somehow they still got into github
 // const apiKey = process.env.REACT_APP_API_KEY;
@@ -11,13 +12,12 @@ import apiCallValidate from "../../utils/APIrelated";
 // and the position of the messages (once they both show)
 
 function OutputPart({ submittedCities, inputCity, otherMessage }) {
-  //FIXME: the arr gets printed 3 times (OutputPart)
   console.log(submittedCities);
   // console.log(submittedCities.length);
 
   const [userCityMessage, setUserCityMessage] = useState("");
   const [responseCity, setResponseCity] = useState("");
-  //NOTE: responsible for printing the inputCity and checking if used before
+  //NOTE: prints the inputCity and checks if used before
   useEffect(() => {
     const manageUserCityMessage = () => {
       //store here for convenience
@@ -41,11 +41,6 @@ function OutputPart({ submittedCities, inputCity, otherMessage }) {
     manageUserCityMessage();
   }, [inputCity, submittedCities]);
 
-  //TODO: 1. inputCity: validation through API; (inputCity true or false)
-  // 2. responseCity: API request;
-  //conditions: starts with the last letter of inputCity && hasn't been used before
-  //make sure the next inputCity starts with the last letter of responseCity
-
   // 1 & 2 should be a separate file for convenience?
 
   //IMPORTANT: API check should happen when the whole word is submitted
@@ -55,8 +50,7 @@ function OutputPart({ submittedCities, inputCity, otherMessage }) {
   // or a list to search: https://rapidapi.com/collection/city-data-api
 
   // working API
-  //TODO: figure what should go in the url
-  //FIXME: moved to BtnSubmot:
+  //NOTE: moved to BtnSubmot:
   // useEffect(() => {
   //   console.log("fetching city:", inputCity);
   //   const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?types=CITY&minPopulation=20000&namePrefix=${inputCity}in&limit=1`;
@@ -67,8 +61,7 @@ function OutputPart({ submittedCities, inputCity, otherMessage }) {
   //       "X-RapidAPI-Host": apiHost,
   //     },
   //   };
-  //   //FIXME: the value set above instantly changes once pages loads
-  //   //the function is called instantly and changes the word - how to fix?
+  //   NOTE: the function is called instantly and changes the word - how to fix?
   //   const fetchCity = async () => {
   //     const resultCity = await fetch(url, options);
   //     //can't read the returned value and erases 'ПРИВЕТ'?
@@ -83,10 +76,10 @@ function OutputPart({ submittedCities, inputCity, otherMessage }) {
 
   return (
     <div className="output-part">
-      <div className="userCity">
+      <div className="user-city">
         {inputCity} {userCityMessage}
       </div>
-      <div className="responseCity">
+      <div className="response-city" style={{ padding: "60px" }}>
         {responseCity}
         {otherMessage}
       </div>

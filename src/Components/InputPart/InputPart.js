@@ -15,17 +15,28 @@ function InputPart({
   setSubmittedCities,
   validationCity,
   setValidationCity,
+  setOtherMessage,
+  otherMessage,
+  scoreVar,
+  setScoreVar,
 }) {
+  const removeOtherMessage = () => setOtherMessage("");
   return (
     <div className="input-part">
-      <ScoreKeeper />
+      <ScoreKeeper
+        scoreVar={scoreVar}
+        setScoreVar={setScoreVar}
+        submittedCities={submittedCities}
+        otherMessage={otherMessage}
+      />
       <form onSubmit={handleCities}>
         <input
           className="input-field"
           type="text"
           onChange={handleInputChange}
-          value={inputCity} /*without it the field did't clear */
+          value={inputCity}
           placeholder="Name a city"
+          onClick={removeOtherMessage}
         ></input>
         {/* <Buttons /> */}
         <BtnSubmit handleCities={handleCities} />
@@ -35,10 +46,13 @@ function InputPart({
         setInputCity={setInputCity}
         submittedCities={submittedCities}
         setSubmittedCities={setSubmittedCities}
+        setOtherMessage={setOtherMessage}
         validationCity={validationCity}
         setValidationCity={setValidationCity}
         handleInputChange={handleInputChange}
         handleCities={handleCities}
+        scoreVar={scoreVar}
+        setScoreVar={setScoreVar}
       />
     </div>
   );
