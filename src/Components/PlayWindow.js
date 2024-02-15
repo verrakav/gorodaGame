@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./PlayWindow.css";
 import InputPart from "./InputPart/InputPart";
 import OutputPart from "./OutputPart/OutputPart";
+// import { type } from "@testing-library/user-event/dist/type";
+// import print from "../utils/Helpers";
+// import cities from "cities.json";
+
 // import { debounce } from "lodash";
 const apiKey = "a56f2689e9msh374ad488f32c171p1726f9jsnc73f34e19b3f";
 const apiHost = "wft-geo-db.p.rapidapi.com";
+//NOTE: JSON work
 
 function PlayWindow() {
   const [inputCity, setInputCity] = useState("");
@@ -21,6 +26,7 @@ function PlayWindow() {
   //setInputCity('') <- this cleared the field
   //as a result an empty string was added to the array
   // };
+  //NOTE: should prevent from undefined values
 
   const handleInputChange = (event) => {
     setInputCity(event.target.value);
@@ -29,6 +35,7 @@ function PlayWindow() {
   const handleCities = (event) => {
     //the default behavior of a form submission: refresh the page - interferes w/React state?
     event.preventDefault();
+    console.log(inputCity);
     if (!inputCity || inputCity.length < 4) {
       alert("Choose a city");
     } else {
@@ -50,7 +57,7 @@ function PlayWindow() {
         const result = await response.text();
         //validates if the input exists
         if (result.includes(inputCity)) {
-          console.log(result);
+          // console.log(result);
           setSubmittedCities((prev) => [...prev, inputCity]);
           setOtherMessage("");
         } else {
@@ -58,23 +65,9 @@ function PlayWindow() {
         }
       };
       fetchCity();
-
-      //fetching the next city
-      //FIXME: need more time to think
-      // const systemAnswer = (submittedCities, options) => {
-      //   console.log(submittedCities);
-      //   let lastCity = submittedCities.length - 1;
-      //   let lastLetter = lastCity.length - 1;
-      //   const urlResponse = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?types=CITY&minPopulation=20000&namePrefix=${lastLetter}&limit=1`;
-      //   const fetchSystemAnswer = async () => {
-      //     const systemResponse = await fetch(urlResponse, options);
-      //     const systemResult = await systemResponse.text();
-      //     console.log(systemResult);
-      //   };
-      // };
-      // systemAnswer();
+      // console.log(submittedCities.length);
+      setInputCity("");
     }
-    setInputCity("");
   };
 
   return (

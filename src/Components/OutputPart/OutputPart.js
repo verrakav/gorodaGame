@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import apiCallValidate from "../../utils/APIrelated";
 import "../PlayWindow.css";
+import cities from "cities.json";
+// import { type } from "@testing-library/user-event/dist/type";
+
 //alllows access the local variable here
 //FIXME: somehow they still got into github
 // const apiKey = process.env.REACT_APP_API_KEY;
@@ -33,11 +36,27 @@ function OutputPart({ submittedCities, inputCity, otherMessage }) {
       ) {
         setUserCityMessage(`${lastCity} has been used before`);
       } else {
-        /* if (validation from api) */
         setUserCityMessage(`You say: ${lastCity}`);
+        let foundCity = false;
+        //FIXME: JSON manipualtions
+        cities.forEach((el) => {
+          //both vars work
+          const lastLetter = lastCity[lastCity.length - 1].toUpperCase();
+          const cityName = el.name.toUpperCase().trim();
+          if (
+            cityName.startsWith(lastLetter) &&
+            !foundCity &&
+            !submittedCities.includes(cityName)
+          ) {
+            console.log(`found: ${cityName}`);
+            foundCity = true;
+            submittedCities.push(cityName);
+            setResponseCity(`I say: ${cityName}`);
+          }
+        });
       }
+      //API call to show the city on the map
     };
-
     manageUserCityMessage();
   }, [inputCity, submittedCities]);
 
@@ -49,40 +68,18 @@ function OutputPart({ submittedCities, inputCity, otherMessage }) {
   //or this: https://developers.amadeus.com/
   // or a list to search: https://rapidapi.com/collection/city-data-api
 
-  // working API
-  //NOTE: moved to BtnSubmot:
-  // useEffect(() => {
-  //   console.log("fetching city:", inputCity);
-  //   const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?types=CITY&minPopulation=20000&namePrefix=${inputCity}in&limit=1`;
-  //   const options = {
-  //     method: "GET",
-  //     headers: {
-  //       "X-RapidAPI-Key": apiKey,
-  //       "X-RapidAPI-Host": apiHost,
-  //     },
-  //   };
-  //   NOTE: the function is called instantly and changes the word - how to fix?
-  //   const fetchCity = async () => {
-  //     const resultCity = await fetch(url, options);
-  //     //can't read the returned value and erases 'ПРИВЕТ'?
-  //     console.log(resultCity);
-  //     resultCity.json().then((json) => setResponseCity(json.city));
-  //     // setResponseCity(json.city);
-  //     // console.log(options.headers);
-  //   };
-  //   fetchCity();
-  //   // console.log(resultCity);
-  // }, [inputCity]);
-
   return (
-    <div className="output-part">
-      <div className="user-city">
-        {inputCity} {userCityMessage}
-      </div>
-      <div className="response-city" style={{ padding: "60px" }}>
-        {responseCity}
-        {otherMessage}
-      </div>
+    <div
+      className="output-part"
+      style={{
+        marginBottom: "15px",
+        lineHeight: "30px",
+        display: "inline",
+      }}
+    >
+      <div className="user-city">{userCityMessage}</div>
+      <div className="response-city">{responseCity}</div>
+      <div className="otherMessage">{otherMessage}</div>
     </div>
   );
 }

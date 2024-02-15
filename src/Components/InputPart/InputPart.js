@@ -19,6 +19,7 @@ function InputPart({
   otherMessage,
   scoreVar,
   setScoreVar,
+  setResponseCity,
 }) {
   const removeOtherMessage = () => setOtherMessage("");
   return (
@@ -53,6 +54,7 @@ function InputPart({
         handleCities={handleCities}
         scoreVar={scoreVar}
         setScoreVar={setScoreVar}
+        setResponseCity={setResponseCity}
       />
     </div>
   );

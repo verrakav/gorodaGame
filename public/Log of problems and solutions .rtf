@@ -12,7 +12,7 @@
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
 {\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid101\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
 {\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
-\paperw11900\paperh16840\margl1440\margr1440\vieww5320\viewh14020\viewkind0
+\paperw11900\paperh16840\margl1440\margr1440\vieww7800\viewh14480\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc\partightenfactor0
 
 \f0\fs28 \cf0 ##Log of problems and solutions ##\
@@ -41,7 +41,7 @@
 \cf0 - inline styles for react: first declare a set of rules and store them in a variable, then in the return part add the attribute style=\{variable for the set of rules\}\
 - typeof always returns an object; \
 - Array.isArray(arrToCheck) - specifically check arr\
-\
+\'97 box-sizing: border-box (fixed the popup-trigger overflow)\
 \'97 this error: 
 \f2\fs22 \expnd0\expndtw0\kerning0
 \outl0\strokewidth0 \strokec2 Error: error:0308010C:digital envelope routines::unsupported\
@@ -209,24 +209,39 @@ PS: the crash after installing popupjs\
 \
 11Feb:\
 \'97 fetching the next city \'97 fail\
-\'97 fixed scores\
+\'97 fixed scores (works without logic)\
+\
+14 Feb\
+\'97 tired of fighting with the API, got an json pckg from here: https://www.npmjs.com/package/cities.json?activeTab=readme\
+\
+
+\f1\b NOTE: 
+\f0\b0 learn how to use booleans to toggle search for cities and stop once found \
+\
+15 Feb\
+\'97 raw working gameplay\
 \
 TODO:\
-\'97 add validation logic through API\
+\'97 fix scoring system \
  \'97 the rules don\'92t blur the background \
-\'97 add line height in the output part\
 \'97 more styling for alert windows (no input & final score)\
 \
 QUESTIONS:\
-\'97 how to pass the whole pack of PROPS? \'85props and then access them props.inputCity?\
+\'97 how to pass the whole pack of PROPS? \'85props and then access them this.props.inputCity?\
 \'97 loadash and debounce fnc worked weird: slowed down the keyboard response to click and instead of Moscow printed OW\
-\'97 fnc handleCities is getting bigger abstract minor elements into a separate file? It still needs validation logic (see TODO)\
+\'97 fnc 
+\f1\b handleCities
+\f0\b0  how to abstract \'97 no idea, 
+\f1\b repetitions: 
+\f0\b0 think how to fix: handleCities & systemAnswer\
+\
 \'97same with PlayWindow comp: abstract fnc and then import in it? (Maybe it solves the problem with the scoring system?)\
 \'97tried hiding API key with .env didn\'92t work\
 \'97 scoring system: when useState(0) but 1st render shows 5 (set it to -5 but feels like cheating)\
 \
+\'97 how to pass setResponseCity to the btnGiveUp?\
 \
-\
+IDEA: the whole functionality of handleCitites unpack into a separate reusable function and import it into handleCities and the part that make validation logic; do the same with the API calls?\
 \
 \
 \
