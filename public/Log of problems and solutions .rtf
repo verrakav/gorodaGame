@@ -221,27 +221,52 @@ PS: the crash after installing popupjs\
 15 Feb\
 \'97 raw working gameplay\
 \
-TODO:\
-\'97 fix scoring system \
- \'97 the rules don\'92t blur the background \
-\'97 more styling for alert windows (no input & final score)\
+19 Feb\
+\'97 fixed scoring (almost);\
+\'97 fixed reset\
 \
-QUESTIONS:\
-\'97 how to pass the whole pack of PROPS? \'85props and then access them this.props.inputCity?\
-\'97 loadash and debounce fnc worked weird: slowed down the keyboard response to click and instead of Moscow printed OW\
-\'97 fnc 
+TODO:\
+\'97 sort out the props\
+\'97 fix scoring system \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \'97 fnc 
 \f1\b handleCities
 \f0\b0  how to abstract \'97 no idea, 
 \f1\b repetitions: 
 \f0\b0 think how to fix: handleCities & systemAnswer\
-\
 \'97same with PlayWindow comp: abstract fnc and then import in it? (Maybe it solves the problem with the scoring system?)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0  \'97 the rules don\'92t blur the background \
+\'97 more styling for alert windows (no input & final score)\
+\
+QUESTIONS:\
+\'97 loadash and debounce fnc worked weird: slowed down the keyboard response to click and instead of Moscow printed OW\
+\
 \'97tried hiding API key with .env didn\'92t work\
+\
 \'97 scoring system: when useState(0) but 1st render shows 5 (set it to -5 but feels like cheating)\
 \
 \'97 how to pass setResponseCity to the btnGiveUp?\
 \
-IDEA: the whole functionality of handleCitites unpack into a separate reusable function and import it into handleCities and the part that make validation logic; do the same with the API calls?\
+\'97 how to move out functions into a separate module if they use hook elements such as submittedCities and inputCity (see PlayWindow fetch())\
+\
+\'97 lastCity const lives in two modules: OutputPart & ScoreKeeper\
+\
+\'97 responseCity gets transferred to userCityMessage\
+\
+
+\f1\b IDEA
+\f0\b0 : the whole functionality of handleCitites unpack into a separate reusable function and import it into handleCities and the part that make validation logic; do the same with the API calls?\
+\
+\'97move responseCity up in the tree and pass it as a signal?\
+\
+
+\f1\b Add logic: 1.
+\f0\b0 cities go in the same order every time so when you play multiple times you can remember the sequence 
+\f1\b 2. 
+\f0\b0 There\'92re a lot of cities that end with the word 
+\f3\i city - 
+\f0\i0 exclude them from the list\
 \
 \
 \

@@ -39,7 +39,6 @@ function InputPart({
           placeholder="Name a city"
           onClick={removeOtherMessage}
         ></input>
-        {/* <Buttons /> */}
         <BtnSubmit handleCities={handleCities} />
       </form>
       <BtnGiveUp

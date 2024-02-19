@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./PlayWindow.css";
 import InputPart from "./InputPart/InputPart";
 import OutputPart from "./OutputPart/OutputPart";
-// import { type } from "@testing-library/user-event/dist/type";
-// import print from "../utils/Helpers";
-// import cities from "cities.json";
-
 // import { debounce } from "lodash";
+
 const apiKey = "a56f2689e9msh374ad488f32c171p1726f9jsnc73f34e19b3f";
 const apiHost = "wft-geo-db.p.rapidapi.com";
-//NOTE: JSON work
 
 function PlayWindow() {
   const [inputCity, setInputCity] = useState("");
@@ -19,14 +15,7 @@ function PlayWindow() {
   const [otherMessage, setOtherMessage] = useState("");
 
   const [scoreVar, setScoreVar] = useState(-5);
-
-  //NOTEthe problem was in this:
-  // const handleBtnSubmitClick = () => {
-  //   // alert("works!");
-  //setInputCity('') <- this cleared the field
-  //as a result an empty string was added to the array
-  // };
-  //NOTE: should prevent from undefined values
+  const [responseCity, setResponseCity] = useState("");
 
   const handleInputChange = (event) => {
     setInputCity(event.target.value);
@@ -61,7 +50,7 @@ function PlayWindow() {
           setSubmittedCities((prev) => [...prev, inputCity]);
           setOtherMessage("");
         } else {
-          setOtherMessage(`The city ${inputCity} doesn't exist`);
+          setOtherMessage(`The city ${inputCity.toUpperCase()} doesn't exist`);
         }
       };
       fetchCity();
@@ -77,6 +66,8 @@ function PlayWindow() {
         otherMessage={otherMessage}
         submittedCities={submittedCities}
         setSubmittedCities={setSubmittedCities}
+        responseCity={responseCity}
+        setResponseCity={setResponseCity}
       />
       <InputPart
         inputCity={inputCity}
@@ -91,6 +82,8 @@ function PlayWindow() {
         setOtherMessage={setOtherMessage}
         scoreVar={scoreVar}
         setScoreVar={setScoreVar}
+        responseCity={responseCity}
+        setResponseCity={setResponseCity}
       />
     </div>
   );

@@ -10,7 +10,7 @@ function BtnGiveUp({
   setOtherMessage,
   setScoreVar,
   scoreVar,
-  // setResponseCity,
+  setResponseCity,
 }) {
   const handleGiveUp = () => {
     setInputCity("");
@@ -18,7 +18,7 @@ function BtnGiveUp({
     setValidationCity("");
     setOtherMessage("");
     setScoreVar(-5);
-    // setResponseCity("");
+    setResponseCity("");
     alert(`Congrats! Your score is: ${scoreVar}`);
   };
   return (

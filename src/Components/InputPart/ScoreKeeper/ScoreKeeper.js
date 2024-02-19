@@ -7,6 +7,7 @@ function ScoreKeeper({ scoreVar, setScoreVar, submittedCities, inputCity }) {
   useEffect(() => {
     //if only inputCity - score starts with 0
     // if submittedCities or 2 params - score starts with 5
+    let lastCity = submittedCities[submittedCities.length - 1];
     if (submittedCities) {
       setScoreVar(scoreVar + 5);
     }
