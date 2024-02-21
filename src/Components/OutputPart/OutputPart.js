@@ -10,6 +10,45 @@ import cities from "cities.json";
 // const apiKey = "a56f2689e9msh374ad488f32c171p1726f9jsnc73f34e19b3f";
 // const apiHost = "wft-geo-db.p.rapidapi.com";
 
+const manageUserCityMessage = (submittedCities, setUserCityMessage, setResponseCity) => {
+  //store here for convenience
+  const lastIdx = submittedCities.length - 1;
+  const lastCity = submittedCities[submittedCities.length - 1];
+
+  if (submittedCities.length === 0) {
+    setUserCityMessage(`You start :)`);
+  } else if (
+      submittedCities.length > 1 &&
+      submittedCities.includes(lastCity) &&
+      submittedCities.indexOf(lastCity) !== lastIdx
+  ) {
+    setUserCityMessage(`${lastCity} has been used before`);
+  } else {
+    setUserCityMessage(`You say: ${lastCity.toUpperCase()}`);
+
+    //NOTE: JSON manipualtions
+    let foundCity = false;
+    cities.forEach((el) => {
+      //both vars work
+      const lastLetter = lastCity[lastCity.length - 1].toUpperCase();
+      const cityName = el.name.toUpperCase();
+      if (
+          cityName.startsWith(lastLetter) &&
+          !foundCity &&
+          !submittedCities.includes(cityName)
+          //FIXME: trying to add more logic here
+          //&& !cityName.split(" ").includes("city")
+      ) {
+        console.log(`found: ${cityName}`);
+        foundCity = true;
+        submittedCities.push(cityName);
+        setResponseCity(`I say: ${cityName}`);
+        //API call to show the city on the map
+      }
+    });
+  }
+};
+
 function OutputPart({
   submittedCities,
   inputCity,
@@ -23,45 +62,7 @@ function OutputPart({
   const [userCityMessage, setUserCityMessage] = useState("");
   //NOTE: does the core game logic
   useEffect(() => {
-    const manageUserCityMessage = () => {
-      //store here for convenience
-      const lastIdx = submittedCities.length - 1;
-      const lastCity = submittedCities[submittedCities.length - 1];
-
-      if (submittedCities.length === 0) {
-        setUserCityMessage(`You start :)`);
-      } else if (
-        submittedCities.length > 1 &&
-        submittedCities.includes(lastCity) &&
-        submittedCities.indexOf(lastCity) !== lastIdx
-      ) {
-        setUserCityMessage(`${lastCity} has been used before`);
-      } else {
-        setUserCityMessage(`You say: ${lastCity.toUpperCase()}`);
-
-        //NOTE: JSON manipualtions
-        let foundCity = false;
-        cities.forEach((el) => {
-          //both vars work
-          const lastLetter = lastCity[lastCity.length - 1].toUpperCase();
-          const cityName = el.name.toUpperCase();
-          if (
-            cityName.startsWith(lastLetter) &&
-            !foundCity &&
-            !submittedCities.includes(cityName)
-            //FIXME: trying to add more logic here
-            //&& !cityName.split(" ").includes("city")
-          ) {
-            console.log(`found: ${cityName}`);
-            foundCity = true;
-            submittedCities.push(cityName);
-            setResponseCity(`I say: ${cityName}`);
-            //API call to show the city on the map
-          }
-        });
-      }
-    };
-    manageUserCityMessage();
+    manageUserCityMessage(submittedCities, setUserCityMessage, setResponseCity);
   }, [inputCity, submittedCities]);
 
   return (
