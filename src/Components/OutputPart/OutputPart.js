@@ -15,13 +15,13 @@ const manageUserCityMessage = (submittedCities, setUserCityMessage, setResponseC
   const lastIdx = submittedCities.length - 1;
   const lastCity = submittedCities[submittedCities.length - 1];
 
+  const hasCityBeenUsed = submittedCities.length > 1 &&
+      submittedCities.includes(lastCity) &&
+      submittedCities.indexOf(lastCity) !== lastIdx;
+
   if (submittedCities.length === 0) {
     setUserCityMessage(`You start :)`);
-  } else if (
-      submittedCities.length > 1 &&
-      submittedCities.includes(lastCity) &&
-      submittedCities.indexOf(lastCity) !== lastIdx
-  ) {
+  } else if (hasCityBeenUsed) {
     setUserCityMessage(`${lastCity} has been used before`);
   } else {
     setUserCityMessage(`You say: ${lastCity.toUpperCase()}`);
