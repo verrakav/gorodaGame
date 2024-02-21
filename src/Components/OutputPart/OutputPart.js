@@ -25,29 +25,31 @@ const manageUserCityMessage = (submittedCities, setUserCityMessage, setResponseC
     setUserCityMessage(`${lastCity} has been used before`);
   } else {
     setUserCityMessage(`You say: ${lastCity.toUpperCase()}`);
-
-    //NOTE: JSON manipualtions
-    let foundCity = false;
-    cities.forEach((el) => {
-      //both vars work
-      const lastLetter = lastCity[lastCity.length - 1].toUpperCase();
-      const cityName = el.name.toUpperCase();
-      if (
-          cityName.startsWith(lastLetter) &&
-          !foundCity &&
-          !submittedCities.includes(cityName)
-          //FIXME: trying to add more logic here
-          //&& !cityName.split(" ").includes("city")
-      ) {
-        console.log(`found: ${cityName}`);
-        foundCity = true;
-        submittedCities.push(cityName);
-        setResponseCity(`I say: ${cityName}`);
-        //API call to show the city on the map
-      }
-    });
+    jsonManipulations(submittedCities, setResponseCity, lastCity);
   }
 };
+
+const jsonManipulations = (submittedCities, setResponseCity, lastCity) => {
+  let foundCity = false;
+  cities.forEach((el) => {
+    //both vars work
+    const lastLetter = lastCity[lastCity.length - 1].toUpperCase();
+    const cityName = el.name.toUpperCase();
+    if (
+        cityName.startsWith(lastLetter) &&
+        !foundCity &&
+        !submittedCities.includes(cityName)
+        //FIXME: trying to add more logic here
+        //&& !cityName.split(" ").includes("city")
+    ) {
+      console.log(`found: ${cityName}`);
+      foundCity = true;
+      submittedCities.push(cityName);
+      setResponseCity(`I say: ${cityName}`);
+      //API call to show the city on the map
+    }
+  });
+}
 
 function OutputPart({
   submittedCities,
