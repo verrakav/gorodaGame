@@ -3,18 +3,14 @@ import "./ScoreKeeper.css";
 //NOTE: the lodash that didn't work
 // import { set } from "lodash";
 
-function ScoreKeeper({ scoreVar, setScoreVar, submittedCities, inputCity }) {
+//what's submittedCities here for?
+function ScoreKeeper({ scoreVar, setScoreVar, submittedCities, invalidCity }) {
   useEffect(() => {
-    //if only inputCity - score starts with 0
-    // if submittedCities or 2 params - score starts with 5
-    // let lastCity = submittedCities[submittedCities.length - 1];
-    if (submittedCities && !submittedCities.includes(inputCity)) {
+    if (invalidCity) {
+      setScoreVar(scoreVar);
+    } else {
       setScoreVar(scoreVar + 5);
     }
-    //FIXME: doesn't seem to do that part at all
-    // if(submittedCities.includes(inputCity)){
-    //   setScoreVar(scoreVar)
-    // }
   }, [submittedCities]);
   return <div className="score">Your score: {scoreVar}</div>;
 }

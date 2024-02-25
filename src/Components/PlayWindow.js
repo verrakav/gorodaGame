@@ -27,7 +27,7 @@ function PlayWindow() {
       // vars to use in the API call
       // const lastLetter
       fetchUserCity(inputCity, setSubmittedCities, setInvalidCity);
-      // console.log(submittedCities.length);
+      console.log(submittedCities);
       setInputCity("");
     }
   };
@@ -36,9 +36,7 @@ function PlayWindow() {
     <div className="play-window">
       <OutputPart
         invalidCity={invalidCity}
-        setInvalidCity={setInvalidCity}
         submittedCities={submittedCities}
-        setSubmittedCities={setSubmittedCities}
         computerResponseCity={computerResponseCity}
         setComputerResponseCity={setComputerResponseCity}
       />
@@ -53,7 +51,6 @@ function PlayWindow() {
         setInvalidCity={setInvalidCity}
         scoreVar={scoreVar}
         setScoreVar={setScoreVar}
-        computerResponseCity={computerResponseCity}
         setComputerResponseCity={setComputerResponseCity}
       />
     </div>
