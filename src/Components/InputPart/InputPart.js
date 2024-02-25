@@ -1,59 +1,53 @@
-import React from "react";
 import "./InputPart.css";
 import ScoreKeeper from "./ScoreKeeper/ScoreKeeper";
 // import Buttons from "./Buttons";
 import BtnSubmit from "./Buttons/BtnSubmit";
 import BtnGiveUp from "./Buttons/BtnGiveUp";
+// import fetchCity from "../../utils/APIrelated";
 
-//ASK: shorthannd for all props? ...props and then props.inputCity?
 function InputPart({
   inputCity,
   setInputCity,
-  handleCities,
+  handleUserCity,
   handleInputChange,
   submittedCities,
   setSubmittedCities,
-  validationCity,
-  setValidationCity,
-  setOtherMessage,
-  otherMessage,
+  setInvalidCity,
+  invalidCity,
   scoreVar,
   setScoreVar,
-  setResponseCity,
+  setComputerResponseCity,
 }) {
-  const removeOtherMessage = () => setOtherMessage("");
+  const removeInvalidCityMessage = () => setInvalidCity("");
+
   return (
     <div className="input-part">
       <ScoreKeeper
         scoreVar={scoreVar}
         setScoreVar={setScoreVar}
         submittedCities={submittedCities}
-        otherMessage={otherMessage}
+        invalidCity={invalidCity}
       />
-      <form onSubmit={handleCities}>
+      <form onSubmit={handleUserCity}>
         <input
           className="input-field"
           type="text"
           onChange={handleInputChange}
           value={inputCity}
           placeholder="Name a city"
-          onClick={removeOtherMessage}
-        ></input>
-        <BtnSubmit handleCities={handleCities} />
+          onClick={removeInvalidCityMessage}></input>
+        <BtnSubmit handleUserCity={handleUserCity} />
       </form>
       <BtnGiveUp
         inputCity={inputCity}
         setInputCity={setInputCity}
         submittedCities={submittedCities}
         setSubmittedCities={setSubmittedCities}
-        setOtherMessage={setOtherMessage}
-        validationCity={validationCity}
-        setValidationCity={setValidationCity}
+        setInvalidCity={setInvalidCity}
         handleInputChange={handleInputChange}
-        handleCities={handleCities}
         scoreVar={scoreVar}
         setScoreVar={setScoreVar}
-        setResponseCity={setResponseCity}
+        setComputerResponseCity={setComputerResponseCity}
       />
     </div>
   );

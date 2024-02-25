@@ -1,59 +1,32 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./PlayWindow.css";
 import InputPart from "./InputPart/InputPart";
 import OutputPart from "./OutputPart/OutputPart";
-// import { debounce } from "lodash";
-
-const apiKey = "a56f2689e9msh374ad488f32c171p1726f9jsnc73f34e19b3f";
-const apiHost = "wft-geo-db.p.rapidapi.com";
+import { fetchUserCity } from "../utils/APIrelated";
 
 function PlayWindow() {
   const [inputCity, setInputCity] = useState("");
   const [submittedCities, setSubmittedCities] = useState([]);
-
-  const [validationCity, setValidationCity] = useState("");
-  const [otherMessage, setOtherMessage] = useState("");
-
+  //FIXME: -5
   const [scoreVar, setScoreVar] = useState(-5);
-  const [responseCity, setResponseCity] = useState("");
+
+  const [invalidCity, setInvalidCity] = useState("");
+  const [computerResponseCity, setComputerResponseCity] = useState("");
 
   const handleInputChange = (event) => {
     setInputCity(event.target.value);
   };
 
-  const handleCities = (event) => {
-    //the default behavior of a form submission: refresh the page - interferes w/React state?
+  const handleUserCity = (event) => {
     event.preventDefault();
-    console.log(inputCity);
+    // console.log(inputCity);
     if (!inputCity || inputCity.length < 4) {
       alert("Choose a city");
     } else {
       // console.log("fetching city:", inputCity);
-      //NOTE: this API doesn't care for the lower/upper case
-      //vars to use in the API call
-      const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?types=CITY&minPopulation=20000&namePrefix=${inputCity}&limit=1`;
-      const options = {
-        method: "GET",
-        headers: {
-          "X-RapidAPI-Key": apiKey,
-          "X-RapidAPI-Host": apiHost,
-        },
-      };
-
-      //checks if the city exists
-      const fetchCity = async () => {
-        const response = await fetch(url, options);
-        const result = await response.text();
-        //validates if the input exists
-        if (result.includes(inputCity)) {
-          // console.log(result);
-          setSubmittedCities((prev) => [...prev, inputCity]);
-          setOtherMessage("");
-        } else {
-          setOtherMessage(`The city ${inputCity.toUpperCase()} doesn't exist`);
-        }
-      };
-      fetchCity();
+      // vars to use in the API call
+      // const lastLetter
+      fetchUserCity(inputCity, setSubmittedCities, setInvalidCity);
       // console.log(submittedCities.length);
       setInputCity("");
     }
@@ -62,28 +35,26 @@ function PlayWindow() {
   return (
     <div className="play-window">
       <OutputPart
-        validationCity={validationCity}
-        otherMessage={otherMessage}
+        invalidCity={invalidCity}
+        setInvalidCity={setInvalidCity}
         submittedCities={submittedCities}
         setSubmittedCities={setSubmittedCities}
-        responseCity={responseCity}
-        setResponseCity={setResponseCity}
+        computerResponseCity={computerResponseCity}
+        setComputerResponseCity={setComputerResponseCity}
       />
       <InputPart
         inputCity={inputCity}
         setInputCity={setInputCity}
         submittedCities={submittedCities}
         setSubmittedCities={setSubmittedCities}
-        validationCity={validationCity}
-        setValidationCity={setValidationCity}
         handleInputChange={handleInputChange}
-        handleCities={handleCities}
-        otherMessage={otherMessage}
-        setOtherMessage={setOtherMessage}
+        handleUserCity={handleUserCity}
+        invalidCity={invalidCity}
+        setInvalidCity={setInvalidCity}
         scoreVar={scoreVar}
         setScoreVar={setScoreVar}
-        responseCity={responseCity}
-        setResponseCity={setResponseCity}
+        computerResponseCity={computerResponseCity}
+        setComputerResponseCity={setComputerResponseCity}
       />
     </div>
   );

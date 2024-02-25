@@ -1,4 +1,3 @@
-import React from "react";
 import "./Buttons.css";
 
 //TODO: reset happens here
@@ -6,19 +5,17 @@ import "./Buttons.css";
 function BtnGiveUp({
   setSubmittedCities,
   setInputCity,
-  setValidationCity,
-  setOtherMessage,
+  setInvalidCity,
   setScoreVar,
   scoreVar,
-  setResponseCity,
+  setComputerResponseCity,
 }) {
   const handleGiveUp = () => {
     setInputCity("");
     setSubmittedCities([]);
-    setValidationCity("");
-    setOtherMessage("");
+    setInvalidCity("");
     setScoreVar(-5);
-    setResponseCity("");
+    setComputerResponseCity("");
     alert(`Congrats! Your score is: ${scoreVar}`);
   };
   return (

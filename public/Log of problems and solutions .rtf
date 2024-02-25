@@ -5,14 +5,16 @@
 }
 {\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red42\green49\blue64;\red40\green42\blue46;
 \red236\green242\blue255;\red174\green122\blue247;\red30\green31\blue41;\red72\green255\blue104;\red246\green246\blue239;
-\red252\green93\blue186;\red124\green228\blue252;\red253\green170\blue90;}
+\red252\green93\blue186;\red124\green228\blue252;\red253\green170\blue90;\red38\green38\blue38;\red224\green223\blue249;
+}
 {\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c21569\c25490\c31765;\cssrgb\c20784\c21961\c23529;
 \cssrgb\c94118\c96078\c100000;\cssrgb\c74118\c57647\c97647;\cssrgb\c15686\c16471\c21176;\cssrgb\c31373\c98039\c48235;\cssrgb\c97255\c97255\c94902;
-\cssrgb\c100000\c47451\c77647;\cssrgb\c54510\c91373\c99216;\cssrgb\c100000\c72157\c42353;}
+\cssrgb\c100000\c47451\c77647;\cssrgb\c54510\c91373\c99216;\cssrgb\c100000\c72157\c42353;\cssrgb\c20000\c20000\c20000;\cssrgb\c90196\c90196\c98039;
+}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
 {\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid101\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
 {\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
-\paperw11900\paperh16840\margl1440\margr1440\vieww7800\viewh14480\viewkind0
+\paperw11900\paperh16840\margl1440\margr1440\vieww19660\viewh14660\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc\partightenfactor0
 
 \f0\fs28 \cf0 ##Log of problems and solutions ##\
@@ -225,16 +227,25 @@ PS: the crash after installing popupjs\
 \'97 fixed scoring (almost);\
 \'97 fixed reset\
 \
+24 Feb\
+\'97cleaned up an extra state\
+\'97 var/fnc names\
+\'97 figured out about useEffect()\
+\
+25 Feb\
+\'97 minor clean ups (style in the JSX of OutputPart)\
+\'97 extracted API into a separate file\
+\
+\
 TODO:\
-\'97 sort out the props\
-\'97 fix scoring system \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 \'97 fnc 
-\f1\b handleCities
-\f0\b0  how to abstract \'97 no idea, 
-\f1\b repetitions: 
-\f0\b0 think how to fix: handleCities & systemAnswer\
-\'97same with PlayWindow comp: abstract fnc and then import in it? (Maybe it solves the problem with the scoring system?)\
+\cf0 \'97 move up fncs from Buttons (lowest elms);\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \'97 createContext -> useContext
+\f1\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \'97 fix scoring system \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0  \'97 the rules don\'92t blur the background \
 \'97 more styling for alert windows (no input & final score)\
@@ -245,14 +256,6 @@ QUESTIONS:\
 \'97tried hiding API key with .env didn\'92t work\
 \
 \'97 scoring system: when useState(0) but 1st render shows 5 (set it to -5 but feels like cheating)\
-\
-\'97 how to pass setResponseCity to the btnGiveUp?\
-\
-\'97 how to move out functions into a separate module if they use hook elements such as submittedCities and inputCity (see PlayWindow fetch())\
-\
-\'97 lastCity const lives in two modules: OutputPart & ScoreKeeper\
-\
-\'97 responseCity gets transferred to userCityMessage\
 \
 
 \f1\b IDEA
@@ -269,11 +272,23 @@ QUESTIONS:\
 \f0\i0 exclude them from the list\
 \
 \
+
+\f1\b NB: 
+\f0\b0 sometimes the url strings don\'92t recognise string interpolation\
 \
-\
-\
-\
-\
+
+\f1\b Other questions:\
+
+\f0\b0 Custom Provider, App, index.js and BookContext.Provider\
+What\'92s the hierarchy, and what wraps what\
+Not clear about useEffect cleanup fncts\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs32 \cf13 \cb14 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec13 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
 \
 \
 \
