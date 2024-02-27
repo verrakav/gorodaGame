@@ -4,14 +4,7 @@ import "./ScoreKeeper.css";
 // import { set } from "lodash";
 
 //what's submittedCities here for?
-function ScoreKeeper({ scoreVar, setScoreVar, submittedCities, invalidCity }) {
-  useEffect(() => {
-    if (invalidCity) {
-      setScoreVar(scoreVar);
-    } else {
-      setScoreVar(scoreVar + 5);
-    }
-  }, [submittedCities]);
+function ScoreKeeper({ scoreVar }) {
   return <div className="score">Your score: {scoreVar}</div>;
 }
 

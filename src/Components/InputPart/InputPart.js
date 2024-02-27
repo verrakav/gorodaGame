@@ -1,9 +1,7 @@
 import "./InputPart.css";
 import ScoreKeeper from "./ScoreKeeper/ScoreKeeper";
-// import Buttons from "./Buttons";
 import BtnSubmit from "./Buttons/BtnSubmit";
 import BtnGiveUp from "./Buttons/BtnGiveUp";
-// import fetchCity from "../../utils/APIrelated";
 
 function InputPart({
   inputCity,
@@ -12,21 +10,22 @@ function InputPart({
   handleInputChange,
   submittedCities,
   setSubmittedCities,
-  invalidCity,
+  // invalidCity,
   setInvalidCity,
+  setComputerResponseCity,
+  handleScore,
   scoreVar,
   setScoreVar,
-  setComputerResponseCity,
 }) {
   const removeInvalidCityMessage = () => setInvalidCity("");
-
   return (
     <div className="input-part">
       <ScoreKeeper
         scoreVar={scoreVar}
-        setScoreVar={setScoreVar}
+        // setScoreVar={setScoreVar}
         submittedCities={submittedCities}
-        invalidCity={invalidCity}
+        handleScore={handleScore}
+        // invalidCity={invalidCity}
       />
       <form onSubmit={handleUserCity}>
         <input

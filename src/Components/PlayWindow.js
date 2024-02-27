@@ -7,14 +7,23 @@ import { fetchUserCity } from "../utils/APIrelated";
 function PlayWindow() {
   const [inputCity, setInputCity] = useState("");
   const [submittedCities, setSubmittedCities] = useState([]);
+
   //FIXME: -5
-  const [scoreVar, setScoreVar] = useState(-5);
+  const [scoreVar, setScoreVar] = useState(0);
 
   const [invalidCity, setInvalidCity] = useState("");
   const [computerResponseCity, setComputerResponseCity] = useState("");
 
   const handleInputChange = (event) => {
     setInputCity(event.target.value);
+  };
+
+  const handleScore = () => {
+    if (invalidCity) {
+      setScoreVar(scoreVar);
+    } else {
+      setScoreVar(scoreVar + 5);
+    }
   };
 
   const handleUserCity = (event) => {
@@ -30,6 +39,7 @@ function PlayWindow() {
       console.log(submittedCities);
       setInputCity("");
     }
+    handleScore(scoreVar);
   };
 
   return (
@@ -49,9 +59,9 @@ function PlayWindow() {
         handleUserCity={handleUserCity}
         invalidCity={invalidCity}
         setInvalidCity={setInvalidCity}
-        scoreVar={scoreVar}
-        setScoreVar={setScoreVar}
         setComputerResponseCity={setComputerResponseCity}
+        handleScore={handleScore}
+        scoreVar={scoreVar}
       />
     </div>
   );
