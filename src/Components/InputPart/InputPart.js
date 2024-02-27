@@ -10,7 +10,6 @@ function InputPart({
   handleInputChange,
   submittedCities,
   setSubmittedCities,
-  // invalidCity,
   setInvalidCity,
   setComputerResponseCity,
   handleScore,
@@ -18,14 +17,22 @@ function InputPart({
   setScoreVar,
 }) {
   const removeInvalidCityMessage = () => setInvalidCity("");
+
+  const handleGiveUp = () => {
+    setInputCity("");
+    setSubmittedCities([]);
+    setInvalidCity("");
+    setScoreVar(0);
+    setComputerResponseCity("");
+    alert(`Congrats! Your score is: ${scoreVar}`);
+  };
+
   return (
     <div className="input-part">
       <ScoreKeeper
         scoreVar={scoreVar}
-        // setScoreVar={setScoreVar}
         submittedCities={submittedCities}
         handleScore={handleScore}
-        // invalidCity={invalidCity}
       />
       <form onSubmit={handleUserCity}>
         <input
@@ -37,17 +44,7 @@ function InputPart({
           onClick={removeInvalidCityMessage}></input>
         <BtnSubmit handleUserCity={handleUserCity} />
       </form>
-      <BtnGiveUp
-        inputCity={inputCity}
-        setInputCity={setInputCity}
-        submittedCities={submittedCities}
-        setSubmittedCities={setSubmittedCities}
-        setInvalidCity={setInvalidCity}
-        handleInputChange={handleInputChange}
-        scoreVar={scoreVar}
-        setScoreVar={setScoreVar}
-        setComputerResponseCity={setComputerResponseCity}
-      />
+      <BtnGiveUp handleGiveUp={handleGiveUp} />
     </div>
   );
 }

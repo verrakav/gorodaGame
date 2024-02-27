@@ -33,13 +33,11 @@ function PlayWindow() {
       alert("Choose a city");
     } else {
       // console.log("fetching city:", inputCity);
-      // vars to use in the API call
-      // const lastLetter
       fetchUserCity(inputCity, setSubmittedCities, setInvalidCity);
       console.log(submittedCities);
       setInputCity("");
     }
-    handleScore(scoreVar);
+    handleScore();
   };
 
   return (
@@ -62,6 +60,7 @@ function PlayWindow() {
         setComputerResponseCity={setComputerResponseCity}
         handleScore={handleScore}
         scoreVar={scoreVar}
+        setScoreVar={setScoreVar}
       />
     </div>
   );
