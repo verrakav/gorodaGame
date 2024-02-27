@@ -13,8 +13,9 @@ function OutputPart({
   // console.log(submittedCities.length);
 
   const [userCityMessage, setUserCityMessage] = useState("");
-  //NOTE: does the core game logic
+
   useEffect(() => {
+    //NOTE: does the core game logic
     manageUserCityMessage(
       submittedCities,
       setUserCityMessage,

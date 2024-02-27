@@ -8,11 +8,9 @@ function InputPart({
   setInputCity,
   handleUserCity,
   handleInputChange,
-  submittedCities,
   setSubmittedCities,
   setInvalidCity,
   setComputerResponseCity,
-  handleScore,
   scoreVar,
   setScoreVar,
 }) {
@@ -29,11 +27,7 @@ function InputPart({
 
   return (
     <div className="input-part">
-      <ScoreKeeper
-        scoreVar={scoreVar}
-        submittedCities={submittedCities}
-        handleScore={handleScore}
-      />
+      <ScoreKeeper scoreVar={scoreVar} />
       <form onSubmit={handleUserCity}>
         <input
           className="input-field"

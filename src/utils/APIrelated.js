@@ -39,7 +39,7 @@ export const fetchUserCity = async (
 //FIXME: change this to an API call to set computerResponseCity
 export const jsonManipulations = (
   submittedCities,
-  setResponseCity,
+  setComputerResponseCity,
   lastCity
 ) => {
   let foundCity = false;
@@ -57,7 +57,7 @@ export const jsonManipulations = (
       console.log(`found: ${cityName}`);
       foundCity = true;
       submittedCities.push(cityName);
-      setResponseCity(`I say: ${cityName}`);
+      setComputerResponseCity(`I say: ${cityName}`);
     }
   });
 };
