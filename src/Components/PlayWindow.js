@@ -1,18 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./PlayWindow.css";
 import InputPart from "./InputPart/InputPart";
 import OutputPart from "./OutputPart/OutputPart";
 import { fetchUserCity } from "../utils/APIrelated";
+import manageUserCityMessage from "../utils/Helpers";
 
 function PlayWindow() {
   const [inputCity, setInputCity] = useState("");
   const [submittedCities, setSubmittedCities] = useState([]);
+  const [userCityMessage, setUserCityMessage] = useState("");
 
   //FIXME: -5
   const [scoreVar, setScoreVar] = useState(0);
 
   const [invalidCity, setInvalidCity] = useState("");
   const [computerResponseCity, setComputerResponseCity] = useState("");
+
+  useEffect(() => {
+    //NOTE: does the core game logic
+    manageUserCityMessage(
+      submittedCities,
+      setUserCityMessage,
+      setComputerResponseCity
+    );
+  }, [submittedCities]);
 
   const handleInputChange = (event) => {
     setInputCity(event.target.value);
@@ -47,6 +58,7 @@ function PlayWindow() {
         submittedCities={submittedCities}
         computerResponseCity={computerResponseCity}
         setComputerResponseCity={setComputerResponseCity}
+        userCityMessage={userCityMessage}
       />
       <InputPart
         inputCity={inputCity}

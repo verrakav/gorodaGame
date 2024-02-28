@@ -1,27 +1,22 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import "../PlayWindow.css";
-import manageUserCityMessage from "../../utils/Helpers";
+// import manageUserCityMessage from "../../utils/Helpers";
 // import fetchCity from "../../utils/APIrelated";
 
-function OutputPart({
-  submittedCities,
-  invalidCity,
-  computerResponseCity,
-  setComputerResponseCity,
-}) {
+function OutputPart({ invalidCity, computerResponseCity, userCityMessage }) {
   // console.log(submittedCities);
   // console.log(submittedCities.length);
 
-  const [userCityMessage, setUserCityMessage] = useState("");
+  // const [userCityMessage, setUserCityMessage] = useState("");
 
-  useEffect(() => {
-    //NOTE: does the core game logic
-    manageUserCityMessage(
-      submittedCities,
-      setUserCityMessage,
-      setComputerResponseCity
-    );
-  }, [submittedCities]);
+  // useEffect(() => {
+  //   //NOTE: does the core game logic
+  //   manageUserCityMessage(
+  //     submittedCities,
+  //     setUserCityMessage,
+  //     setComputerResponseCity
+  //   );
+  // }, [submittedCities]);
 
   return (
     <div className="output-part">
