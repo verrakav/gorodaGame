@@ -7,17 +7,6 @@ function OutputPart({ invalidCity, computerResponseCity, userCityMessage }) {
   // console.log(submittedCities);
   // console.log(submittedCities.length);
 
-  // const [userCityMessage, setUserCityMessage] = useState("");
-
-  // useEffect(() => {
-  //   //NOTE: does the core game logic
-  //   manageUserCityMessage(
-  //     submittedCities,
-  //     setUserCityMessage,
-  //     setComputerResponseCity
-  //   );
-  // }, [submittedCities]);
-
   return (
     <div className="output-part">
       <div>{userCityMessage}</div>

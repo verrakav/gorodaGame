@@ -20,16 +20,17 @@ export const fetchUserCity = async (
     method: "GET",
     headers: {
       "X-RapidAPI-Key": apiKey,
-      "X-RapidAPI-Host": apiHost,
-    },
+      "X-RapidAPI-Host": apiHost
+    }
   };
   const response = await fetch(url, options);
   const result = await response.text();
   //validates if the input exists
   if (result.includes(inputCity)) {
-    // console.log(result);
     setSubmittedCities((prev) => [...prev, inputCity]);
     setInvalidCity("");
+    // console.log(result);
+    // console.log(submittedCities);
   } else {
     setInvalidCity(`The city ${inputCity.toUpperCase()} doesn't exist`);
   }

@@ -3,7 +3,7 @@ import "./PlayWindow.css";
 import InputPart from "./InputPart/InputPart";
 import OutputPart from "./OutputPart/OutputPart";
 import { fetchUserCity } from "../utils/APIrelated";
-import manageUserCityMessage from "../utils/Helpers";
+import { manageUserCityMessage, manageGiveUp } from "../utils/Helpers";
 
 function PlayWindow() {
   const [inputCity, setInputCity] = useState("");
@@ -29,7 +29,7 @@ function PlayWindow() {
     setInputCity(event.target.value);
   };
 
-  const handleScore = () => {
+  const handleScore = (invalidCity) => {
     if (invalidCity) {
       setScoreVar(scoreVar);
     } else {
@@ -39,16 +39,27 @@ function PlayWindow() {
 
   const handleUserCity = (event) => {
     event.preventDefault();
-    // console.log(inputCity);
     if (!inputCity || inputCity.length < 4) {
       alert("Choose a city");
+      setScoreVar(scoreVar);
     } else {
-      // console.log("fetching city:", inputCity);
       fetchUserCity(inputCity, setSubmittedCities, setInvalidCity);
-      console.log(submittedCities);
       setInputCity("");
+      handleScore();
     }
-    handleScore();
+  };
+
+  const removeInvalidCityMessage = () => setInvalidCity("");
+
+  const handleGiveUp = () => {
+    manageGiveUp(
+      setInputCity,
+      setSubmittedCities,
+      setInvalidCity,
+      setScoreVar,
+      setComputerResponseCity,
+      scoreVar
+    );
   };
 
   return (
@@ -62,17 +73,14 @@ function PlayWindow() {
       />
       <InputPart
         inputCity={inputCity}
-        setInputCity={setInputCity}
+        removeInvalidCityMessage={removeInvalidCityMessage}
+        handleGiveUp={handleGiveUp}
         submittedCities={submittedCities}
-        setSubmittedCities={setSubmittedCities}
         handleInputChange={handleInputChange}
         handleUserCity={handleUserCity}
         invalidCity={invalidCity}
-        setInvalidCity={setInvalidCity}
-        setComputerResponseCity={setComputerResponseCity}
         handleScore={handleScore}
         scoreVar={scoreVar}
-        setScoreVar={setScoreVar}
       />
     </div>
   );

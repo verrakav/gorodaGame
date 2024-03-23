@@ -1,6 +1,6 @@
 import { jsonManipulations } from "./APIrelated";
 //NOTE: moved from OutputPart
-const manageUserCityMessage = (
+export const manageUserCityMessage = (
   submittedCities,
   setUserCityMessage,
   setComputerResponseCity
@@ -23,4 +23,18 @@ const manageUserCityMessage = (
   }
 };
 
-export default manageUserCityMessage;
+export const manageGiveUp = (
+  setInputCity,
+  setSubmittedCities,
+  setInvalidCity,
+  setScoreVar,
+  setComputerResponseCity,
+  scoreVar
+) => {
+  setInputCity("");
+  setSubmittedCities([]);
+  setInvalidCity("");
+  setScoreVar(0);
+  setComputerResponseCity("");
+  alert(`Congrats! Your score is: ${scoreVar}`);
+};

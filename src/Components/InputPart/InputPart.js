@@ -5,26 +5,12 @@ import BtnGiveUp from "./Buttons/BtnGiveUp";
 
 function InputPart({
   inputCity,
-  setInputCity,
   handleUserCity,
   handleInputChange,
-  setSubmittedCities,
-  setInvalidCity,
-  setComputerResponseCity,
-  scoreVar,
-  setScoreVar,
+  removeInvalidCityMessage,
+  handleGiveUp,
+  scoreVar
 }) {
-  const removeInvalidCityMessage = () => setInvalidCity("");
-
-  const handleGiveUp = () => {
-    setInputCity("");
-    setSubmittedCities([]);
-    setInvalidCity("");
-    setScoreVar(0);
-    setComputerResponseCity("");
-    alert(`Congrats! Your score is: ${scoreVar}`);
-  };
-
   return (
     <div className="input-part">
       <ScoreKeeper scoreVar={scoreVar} />
