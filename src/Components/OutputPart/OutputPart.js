@@ -1,11 +1,6 @@
 import "../PlayWindow.css";
 
-function OutputPart({
-  invalidCity,
-  computerResponseCity,
-  userCityMessage,
-  inputCity
-}) {
+function OutputPart({ invalidCity, computerResponseCity, userCityMessage }) {
   return (
     <div className="output-part">
       <div>{userCityMessage}</div>

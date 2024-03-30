@@ -11,7 +11,6 @@ function PlayWindow() {
   const [submittedCities, setSubmittedCities] = useState([]);
   const [userCityMessage, setUserCityMessage] = useState("");
 
-  //FIXME: -5
   const [scoreVar, setScoreVar] = useState(0);
 
   const [invalidCity, setInvalidCity] = useState("");

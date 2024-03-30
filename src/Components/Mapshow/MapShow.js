@@ -21,7 +21,7 @@ function MapShow({ computerResponseCity, inputCity, userCityMessage }) {
     //change default centre
     <Map height={400} defaultCenter={[50.879, 4.6997]} defaultZoom={11}>
       <Marker width={50} anchor={[50.879, 4.6997]} />
-      {/* {city && <Marker position={[city.latitude, city.longitude]} />} */}
+      {inputCity && <Marker position={[52.5235, 13.4115]} />}
     </Map>
   );
 }

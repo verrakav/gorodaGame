@@ -9,8 +9,8 @@ import cities from "cities.json";
 const apiKey = "a56f2689e9msh374ad488f32c171p1726f9jsnc73f34e19b3f";
 const apiHost = "wft-geo-db.p.rapidapi.com";
 
-//checks if the city exists
-export const fetchUserCity = async (
+//gets a city
+export const fetchCity = async (
   inputCity
   // setSubmittedCities,
   // setInvalidCity
@@ -29,14 +29,13 @@ export const fetchUserCity = async (
   return result;
 };
 
-export const validateUserCity = (
+//validates if the input exists
+export const validateUserCity = async (
   inputCity,
-  result,
   setSubmittedCities,
   setInvalidCity
 ) => {
-  fetchUserCity(inputCity);
-  //validates if the input exists
+  const result = await fetchCity(inputCity);
   if (result.includes(inputCity)) {
     setSubmittedCities((prev) => [...prev, inputCity]);
     setInvalidCity("");
@@ -49,7 +48,7 @@ export const validateUserCity = (
 
 //NOTE: this gets lat & long
 export const fetchCoordinates = async (city) => {
-  //coordinates should be an obj with lat & long
+  //coordinates should be an arr with lat & long
   // return coordinates;
 };
 
