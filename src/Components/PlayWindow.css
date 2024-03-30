@@ -23,12 +23,3 @@
   width: 50%;
   display: inline;
 }
-
-.leaflet-container:nth-child(3) {
-  flex-basis: 100%;
-}
-
-.leaflet-container {
-  flex: 1;
-  width: 100%;
-}

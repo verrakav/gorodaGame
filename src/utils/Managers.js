@@ -38,3 +38,18 @@ export const manageGiveUp = (
   setComputerResponseCity("");
   alert(`Congrats! Your score is: ${scoreVar}`);
 };
+
+//generates a random location for the start of the game
+export const manageRandomLocation = () => {
+  let coordinates = [];
+  const getCoordinates = () => {
+    for (let i = 0; i < 2; i++) {
+      const result = parseFloat((Math.random() * 180).toFixed(2));
+      const validResult = Math.max(35, result);
+      coordinates.push(validResult);
+    }
+    return coordinates;
+  };
+
+  return getCoordinates();
+};

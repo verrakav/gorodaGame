@@ -1,9 +1,7 @@
-import "leaflet/dist/leaflet.css";
-
-import type { Map as LeafletMap } from "leaflet";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { Map, Marker } from "pigeon-maps";
 import { useEffect, useRef } from "react";
 import { fetchCoordinates } from "../../utils/APIrelated";
+import { manageRandomLocation } from "../../utils/Managers";
 
 //FIXME: city is not valid var
 function MapShow({ computerResponseCity, inputCity, userCityMessage }) {
@@ -16,12 +14,15 @@ function MapShow({ computerResponseCity, inputCity, userCityMessage }) {
       //   mapRef.current.flyTo([city.latitude, city.longitude]);
     }
   }, [computerResponseCity, userCityMessage]);
+
+  const defaultCentre = manageRandomLocation();
+
   return (
-    <MapContainer ref={mapRef} center={[40.7, -74]} zoom={12} scrollWheelZoom>
-      The map is here
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+    //change default centre
+    <Map height={400} defaultCenter={[50.879, 4.6997]} defaultZoom={11}>
+      <Marker width={50} anchor={[50.879, 4.6997]} />
       {/* {city && <Marker position={[city.latitude, city.longitude]} />} */}
-    </MapContainer>
+    </Map>
   );
 }
 
