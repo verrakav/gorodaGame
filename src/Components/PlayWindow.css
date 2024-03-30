@@ -1,24 +1,34 @@
 .play-window {
   display: flex;
-  /* justify-content: space-between; */
-  padding: 100px;
+  flex-wrap: wrap;
+  padding: 50px;
   box-sizing: border-box;
 }
 
+.output-part:nth-child(1),
+.input-part:nth-child(2) {
+  flex-basis: auto;
+}
+
 .output-part {
-  width: 100%;
+  flex: 1;
+  width: 50%;
   margin-bottom: 15px;
   line-height: 30px;
   display: inline;
 }
-/*NOTE: might be more for the output-part after finished with the actual code*/
+
 .input-part {
-  width: 100%;
+  flex: 1;
+  width: 50%;
+  display: inline;
 }
 
-/* NOTE how to link? 
-.input-field {
- border: "4px solid bisque",
-    borderRadius: "0.5em",
-    padding: "6px",
-  } */
+.leaflet-container:nth-child(3) {
+  flex-basis: 100%;
+}
+
+.leaflet-container {
+  flex: 1;
+  width: 100%;
+}

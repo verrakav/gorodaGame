@@ -11,9 +11,9 @@ const apiHost = "wft-geo-db.p.rapidapi.com";
 
 //checks if the city exists
 export const fetchUserCity = async (
-  inputCity,
-  setSubmittedCities,
-  setInvalidCity
+  inputCity
+  // setSubmittedCities,
+  // setInvalidCity
 ) => {
   const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?types=CITY&minPopulation=20000&namePrefix=${inputCity}&limit=1`;
   const options = {
@@ -25,6 +25,17 @@ export const fetchUserCity = async (
   };
   const response = await fetch(url, options);
   const result = await response.text();
+
+  return result;
+};
+
+export const validateUserCity = (
+  inputCity,
+  result,
+  setSubmittedCities,
+  setInvalidCity
+) => {
+  fetchUserCity(inputCity);
   //validates if the input exists
   if (result.includes(inputCity)) {
     setSubmittedCities((prev) => [...prev, inputCity]);
@@ -34,6 +45,12 @@ export const fetchUserCity = async (
   } else {
     setInvalidCity(`The city ${inputCity.toUpperCase()} doesn't exist`);
   }
+};
+
+//NOTE: this gets lat & long
+export const fetchCoordinates = async (city) => {
+  //coordinates should be an obj with lat & long
+  // return coordinates;
 };
 
 //NOTE: extracted from OutputPart

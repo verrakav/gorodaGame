@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
 import "./PlayWindow.css";
+import { useState, useEffect } from "react";
 import InputPart from "./InputPart/InputPart";
 import OutputPart from "./OutputPart/OutputPart";
-import { fetchUserCity } from "../utils/APIrelated";
-import { manageUserCityMessage, manageGiveUp } from "../utils/Helpers";
+import MapShow from "./Mapshow/MapShow";
+import { validateUserCity } from "../utils/APIrelated";
+import { manageUserCityMessage, manageGiveUp } from "../utils/Managers";
 
 function PlayWindow() {
   const [inputCity, setInputCity] = useState("");
@@ -43,7 +44,7 @@ function PlayWindow() {
       alert("Choose a city");
       setScoreVar(scoreVar);
     } else {
-      fetchUserCity(inputCity, setSubmittedCities, setInvalidCity);
+      validateUserCity(inputCity, setSubmittedCities, setInvalidCity);
       setInputCity("");
       handleScore();
     }
@@ -65,6 +66,7 @@ function PlayWindow() {
   return (
     <div className="play-window">
       <OutputPart
+        inputCity={inputCity}
         invalidCity={invalidCity}
         submittedCities={submittedCities}
         computerResponseCity={computerResponseCity}
@@ -81,6 +83,11 @@ function PlayWindow() {
         invalidCity={invalidCity}
         handleScore={handleScore}
         scoreVar={scoreVar}
+      />
+      <MapShow
+        inputCity={inputCity}
+        computerResponseCity={computerResponseCity}
+        userCityMessage={userCityMessage}
       />
     </div>
   );
