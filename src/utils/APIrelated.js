@@ -41,8 +41,10 @@ export const fetchUserCity = async (
 export const jsonManipulations = (
   submittedCities,
   setComputerResponseCity,
-  lastCity
+  lastCity,
+  setCenter
 ) => {
+  let coordinates = [];
   let foundCity = false;
   cities.forEach((el) => {
     //both vars work
@@ -52,13 +54,20 @@ export const jsonManipulations = (
       cityName.startsWith(lastLetter) &&
       !foundCity &&
       !submittedCities.includes(cityName)
-      //FIXME: trying to add more logic here
-      //&& !cityName.split(" ").includes("city")
     ) {
-      console.log(`found: ${cityName}`);
+      console.log(`found: ${cityName} ${el.lat}`);
       foundCity = true;
       submittedCities.push(cityName);
       setComputerResponseCity(`I say: ${cityName}`);
+      coordinates = [el.lat, el.lng];
+      //works
+      // console.log(coordinates);
     }
   });
+  setCenter(coordinates);
 };
+
+// export const manageMapChange = (computerResponseCity, setCenter) => {
+//   const coordinates = jsonManipulations(computerResponseCity);
+//   const [lat, long] = coordinates;
+// };

@@ -17,12 +17,16 @@ function PlayWindow() {
   const [invalidCity, setInvalidCity] = useState("");
   const [computerResponseCity, setComputerResponseCity] = useState("");
 
+  const [center, setCenter] = useState([50.1109, 8.6821]);
+  const [zoom, setZoom] = useState(11);
+
   useEffect(() => {
     //NOTE: does the core game logic
     manageUserCityMessage(
       submittedCities,
       setUserCityMessage,
-      setComputerResponseCity
+      setComputerResponseCity,
+      setCenter
     );
   }, [submittedCities]);
 
@@ -83,8 +87,12 @@ function PlayWindow() {
         handleScore={handleScore}
         scoreVar={scoreVar}
       />
-      {/* will be receiving coordinates as props */}
-      <MapShow />
+      <MapShow
+        center={center}
+        setCenter={setCenter}
+        zoom={zoom}
+        setZoom={setZoom}
+      />
     </div>
   );
 }

@@ -3,7 +3,8 @@ import { jsonManipulations } from "./APIrelated";
 export const manageUserCityMessage = (
   submittedCities,
   setUserCityMessage,
-  setComputerResponseCity
+  setComputerResponseCity,
+  setCenter
 ) => {
   //store here for convenience
   const lastCityIdx = submittedCities.length - 1;
@@ -19,7 +20,12 @@ export const manageUserCityMessage = (
     setUserCityMessage(`${lastCity.toUpperCase()} has been used before`);
   } else {
     setUserCityMessage(`You say: ${lastCity.toUpperCase()}`);
-    jsonManipulations(submittedCities, setComputerResponseCity, lastCity);
+    jsonManipulations(
+      submittedCities,
+      setComputerResponseCity,
+      lastCity,
+      setCenter
+    );
   }
 };
 
