@@ -9,12 +9,12 @@ import cities from "cities.json";
 const apiKey = "a56f2689e9msh374ad488f32c171p1726f9jsnc73f34e19b3f";
 const apiHost = "wft-geo-db.p.rapidapi.com";
 
-//checks if the city exists
 export const fetchUserCity = async (
   inputCity,
   setSubmittedCities,
   setInvalidCity
 ) => {
+  // const newInput = inputCity.toLowerCase
   const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?types=CITY&minPopulation=20000&namePrefix=${inputCity}&limit=1`;
   const options = {
     method: "GET",
@@ -29,14 +29,11 @@ export const fetchUserCity = async (
   if (result.includes(inputCity)) {
     setSubmittedCities((prev) => [...prev, inputCity]);
     setInvalidCity("");
-    // console.log(result);
-    // console.log(submittedCities);
   } else {
     setInvalidCity(`The city ${inputCity.toUpperCase()} doesn't exist`);
   }
 };
 
-//NOTE: extracted from OutputPart
 //FIXME: change this to an API call to set computerResponseCity
 export const jsonManipulations = (
   submittedCities,
@@ -66,8 +63,3 @@ export const jsonManipulations = (
   });
   setCenter(coordinates);
 };
-
-// export const manageMapChange = (computerResponseCity, setCenter) => {
-//   const coordinates = jsonManipulations(computerResponseCity);
-//   const [lat, long] = coordinates;
-// };

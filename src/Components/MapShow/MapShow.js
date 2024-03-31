@@ -15,7 +15,7 @@ function MapShow({ center, setCenter, zoom, setZoom }) {
         setCenter(center);
         setZoom(zoom);
       }}>
-      <Marker width={50} anchor={[50.1109, 8.6821]} />
+      <Marker width={50} anchor={center} />
     </Map>
   );
 }

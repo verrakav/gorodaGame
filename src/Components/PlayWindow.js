@@ -63,7 +63,8 @@ function PlayWindow() {
       setInvalidCity,
       setScoreVar,
       setComputerResponseCity,
-      scoreVar
+      scoreVar,
+      setCenter
     );
   };
 
