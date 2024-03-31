@@ -4,7 +4,7 @@ import InputPart from "./InputPart/InputPart";
 import OutputPart from "./OutputPart/OutputPart";
 import MapShow from "./MapShow/MapShow";
 import { fetchUserCity } from "../utils/APIrelated";
-import { manageUserCityMessage, manageGiveUp } from "../utils/Helpers";
+import { manageUserCityMessage, manageGiveUp } from "../utils/Managers";
 
 function PlayWindow() {
   const [inputCity, setInputCity] = useState("");
