@@ -1,57 +1,32 @@
-import { fetchUserCity } from "./APIrelated";
-
-const exManageUserCityMessage = (
+import { jsonManipulations } from "./APIrelated";
+//NOTE: moved from OutputPart
+export const manageUserCityMessage = (
   submittedCities,
   setUserCityMessage,
-  inputCity,
-  cityInfo
+  setComputerResponseCity,
+  setCenter
 ) => {
   //store here for convenience
-  // const lastCityIdx = submittedCities.length - 1;
-  // const lastCity = submittedCities[submittedCities.length - 1];
-  // console.log(lastCityIdx, lastCity, inputCity);
-  const name = cityInfo.name;
-  // const hasCityBeenUsed =
-  //   submittedCities.length > 1 &&
-  //   submittedCities.includes(lastCity) &&
-  //   submittedCities.indexOf(lastCity) !== lastCityIdx;
+  const lastCityIdx = submittedCities.length - 1;
+  const lastCity = submittedCities[submittedCities.length - 1];
+  const hasCityBeenUsed =
+    submittedCities.length > 1 &&
+    submittedCities.includes(lastCity) &&
+    submittedCities.indexOf(lastCity) !== lastCityIdx;
 
-  if (name) {
-    setUserCityMessage(`You start :) ${name}`);
+  if (submittedCities.length === 0) {
+    setUserCityMessage(`You start :)`);
+  } else if (hasCityBeenUsed) {
+    setUserCityMessage(`${lastCity.toUpperCase()} has been used before`);
+  } else {
+    setUserCityMessage(`You say: ${lastCity.toUpperCase()}`);
+    jsonManipulations(
+      submittedCities,
+      setComputerResponseCity,
+      lastCity,
+      setCenter
+    );
   }
-  // else if (hasCityBeenUsed) {
-  //   setUserCityMessage(`${lastCity.toUpperCase()} has been used before`);
-  // } else {
-  //   // console.log(result);
-  //   setUserCityMessage(`You say: ${lastCity.toUpperCase()}`);
-  // }
-};
-export const manageUserCityMessage = async (
-  submittedCities,
-  setUserCityMessage,
-  inputCity
-) => {
-  const cityInfo = await fetchUserCity(
-    submittedCities,
-    setUserCityMessage,
-    inputCity
-  );
-  exManageUserCityMessage(cityInfo);
-};
-//doesn't work
-export const manageComputerResponseCity = async (
-  submittedCities,
-  setComputerResponseCity,
-  inputCity
-) => {
-  //will probably be an obj
-  // const response = await fetchResopnseCity(
-  //   submittedCities,
-  //   setComputerResponseCity,
-  //   inputCity
-  // );
-  // console.log(response);
-  // setComputerResponseCity(response.compCityName);
 };
 
 export const manageGiveUp = (
@@ -60,7 +35,8 @@ export const manageGiveUp = (
   setInvalidCity,
   setScoreVar,
   setComputerResponseCity,
-  scoreVar
+  scoreVar,
+  setCenter
 ) => {
   setInputCity("");
   setSubmittedCities([]);
@@ -68,19 +44,5 @@ export const manageGiveUp = (
   setScoreVar(0);
   setComputerResponseCity("");
   alert(`Congrats! Your score is: ${scoreVar}`);
+  setCenter([50.1109, 8.6821]);
 };
-
-//generates a random location for the start of the game
-// export const manageRandomLocation = () => {
-//   let coordinates = [];
-//   const getCoordinates = () => {
-//     for (let i = 0; i < 2; i++) {
-//       const result = parseFloat((Math.random() * 180).toFixed(2));
-//       const validResult = result + 1;
-//       coordinates.push(validResult);
-//     }
-//     return coordinates;
-//   };
-
-//   return getCoordinates();
-// };

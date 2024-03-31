@@ -2,13 +2,10 @@ import "./PlayWindow.css";
 import { useState, useEffect } from "react";
 import InputPart from "./InputPart/InputPart";
 import OutputPart from "./OutputPart/OutputPart";
-import MapShow from "./Mapshow/MapShow";
+import MapShow from "./MapShow/MapShow";
 import { fetchUserCity } from "../utils/APIrelated";
-import {
-  manageUserCityMessage,
-  // manageComputerResponseCity,
-  manageGiveUp
-} from "../utils/Managers";
+import { manageUserCityMessage, manageGiveUp } from "../utils/Managers";
+
 
 function PlayWindow() {
   const [inputCity, setInputCity] = useState("");
@@ -20,20 +17,18 @@ function PlayWindow() {
   const [invalidCity, setInvalidCity] = useState("");
   const [computerResponseCity, setComputerResponseCity] = useState("");
 
-  //do I really neeed useEffect?
+
+  const [center, setCenter] = useState([50.1109, 8.6821]);
+  const [zoom, setZoom] = useState(11);
+
   useEffect(() => {
-    //NOTE: does the user logic
+    //NOTE: does the core game logic
     manageUserCityMessage(
       submittedCities,
-      setUserCityMessage
-      // setComputerResponseCity
+      setUserCityMessage,
+      setComputerResponseCity,
+      setCenter
     );
-    //does the comp logic
-    // manageComputerResponseCity(
-    //   submittedCities,
-    //   setComputerResponseCity,
-    //   inputCity
-    // );
   }, [submittedCities]);
 
   const handleInputChange = (event) => {
@@ -71,7 +66,8 @@ function PlayWindow() {
       setInvalidCity,
       setScoreVar,
       setComputerResponseCity,
-      scoreVar
+      scoreVar,
+      setCenter
     );
   };
 
@@ -96,10 +92,12 @@ function PlayWindow() {
         handleScore={handleScore}
         scoreVar={scoreVar}
       />
+      
       <MapShow
-        inputCity={inputCity}
-        computerResponseCity={computerResponseCity}
-        userCityMessage={userCityMessage}
+        center={center}
+        setCenter={setCenter}
+        zoom={zoom}
+        setZoom={setZoom}
       />
     </div>
   );
