@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./PlayWindow.css";
 import InputPart from "./InputPart/InputPart";
 import OutputPart from "./OutputPart/OutputPart";
+import MapShow from "./MapShow/MapShow";
 import { fetchUserCity } from "../utils/APIrelated";
 import { manageUserCityMessage, manageGiveUp } from "../utils/Helpers";
 
@@ -82,6 +83,8 @@ function PlayWindow() {
         handleScore={handleScore}
         scoreVar={scoreVar}
       />
+      {/* will be receiving coordinates as props */}
+      <MapShow />
     </div>
   );
 }
