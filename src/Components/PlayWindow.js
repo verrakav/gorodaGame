@@ -3,8 +3,12 @@ import { useState, useEffect } from "react";
 import InputPart from "./InputPart/InputPart";
 import OutputPart from "./OutputPart/OutputPart";
 import MapShow from "./Mapshow/MapShow";
-import { validateUserCity } from "../utils/APIrelated";
-import { manageUserCityMessage, manageGiveUp } from "../utils/Managers";
+import { fetchUserCity } from "../utils/APIrelated";
+import {
+  manageUserCityMessage,
+  // manageComputerResponseCity,
+  manageGiveUp
+} from "../utils/Managers";
 
 function PlayWindow() {
   const [inputCity, setInputCity] = useState("");
@@ -16,13 +20,20 @@ function PlayWindow() {
   const [invalidCity, setInvalidCity] = useState("");
   const [computerResponseCity, setComputerResponseCity] = useState("");
 
+  //do I really neeed useEffect?
   useEffect(() => {
-    //NOTE: does the core game logic
+    //NOTE: does the user logic
     manageUserCityMessage(
       submittedCities,
-      setUserCityMessage,
-      setComputerResponseCity
+      setUserCityMessage
+      // setComputerResponseCity
     );
+    //does the comp logic
+    // manageComputerResponseCity(
+    //   submittedCities,
+    //   setComputerResponseCity,
+    //   inputCity
+    // );
   }, [submittedCities]);
 
   const handleInputChange = (event) => {
@@ -31,11 +42,13 @@ function PlayWindow() {
 
   const handleUserCity = (event) => {
     event.preventDefault();
+    //TODO: fix edge cases
     if (!inputCity || inputCity.length < 4) {
       alert("Choose a city");
       setScoreVar(scoreVar);
     } else {
-      validateUserCity(inputCity, setSubmittedCities, setInvalidCity);
+      manageUserCityMessage(setSubmittedCities, setInvalidCity);
+      setSubmittedCities(inputCity);
       setInputCity("");
       handleScore();
     }
