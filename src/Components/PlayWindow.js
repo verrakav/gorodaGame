@@ -29,14 +29,6 @@ function PlayWindow() {
     setInputCity(event.target.value);
   };
 
-  const handleScore = (invalidCity) => {
-    if (invalidCity) {
-      setScoreVar(scoreVar);
-    } else {
-      setScoreVar(scoreVar + 5);
-    }
-  };
-
   const handleUserCity = (event) => {
     event.preventDefault();
     if (!inputCity || inputCity.length < 4) {
@@ -46,6 +38,14 @@ function PlayWindow() {
       validateUserCity(inputCity, setSubmittedCities, setInvalidCity);
       setInputCity("");
       handleScore();
+    }
+  };
+
+  const handleScore = (invalidCity) => {
+    if (invalidCity) {
+      setScoreVar(scoreVar);
+    } else {
+      setScoreVar(scoreVar + 5);
     }
   };
 

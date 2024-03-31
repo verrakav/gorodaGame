@@ -1,10 +1,13 @@
 import { Map, Marker } from "pigeon-maps";
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { fetchCoordinates } from "../../utils/APIrelated";
 import { manageRandomLocation } from "../../utils/Managers";
 
 //FIXME: city is not valid var
 function MapShow({ computerResponseCity, inputCity, userCityMessage }) {
+  const [center, setCenter] = useState([]);
+  const [zoom, setZoom] = useState();
+
   const mapRef = useRef(null);
 
   useEffect(() => {
@@ -19,9 +22,15 @@ function MapShow({ computerResponseCity, inputCity, userCityMessage }) {
 
   return (
     //change default centre
-    <Map height={400} defaultCenter={[50.879, 4.6997]} defaultZoom={11}>
-      <Marker width={50} anchor={[50.879, 4.6997]} />
-      {inputCity && <Marker position={[52.5235, 13.4115]} />}
+    <Map
+      height={400}
+      defaultCenter={[50.879, 4.6997]}
+      defaultZoom={11}
+      onBoundsChanged={({ center, zoom }) => {
+        setCenter(center);
+        setZoom(zoom);
+      }}>
+      <Marker width={50} position={[50.879, 4.6997]} />
     </Map>
   );
 }

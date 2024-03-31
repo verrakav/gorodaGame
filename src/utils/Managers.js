@@ -1,10 +1,6 @@
-import { jsonManipulations } from "./APIrelated";
+import { fetchResopnseCity } from "./APIrelated";
 //NOTE: moved from OutputPart
-export const manageUserCityMessage = (
-  submittedCities,
-  setUserCityMessage,
-  setComputerResponseCity
-) => {
+export const manageUserCityMessage = (submittedCities, setUserCityMessage) => {
   //store here for convenience
   const lastCityIdx = submittedCities.length - 1;
   const lastCity = submittedCities[submittedCities.length - 1];
@@ -19,8 +15,21 @@ export const manageUserCityMessage = (
     setUserCityMessage(`${lastCity.toUpperCase()} has been used before`);
   } else {
     setUserCityMessage(`You say: ${lastCity.toUpperCase()}`);
-    jsonManipulations(submittedCities, setComputerResponseCity, lastCity);
+    //FIXME: xperiments
   }
+};
+
+export const manageComputerResponseCity = async (
+  submittedCities,
+  setComputerResponseCity,
+  lastCity
+) => {
+  const response = await fetchResopnseCity(
+    submittedCities,
+    setComputerResponseCity,
+    lastCity
+  );
+  setComputerResponseCity(response);
 };
 
 export const manageGiveUp = (
@@ -45,7 +54,7 @@ export const manageRandomLocation = () => {
   const getCoordinates = () => {
     for (let i = 0; i < 2; i++) {
       const result = parseFloat((Math.random() * 180).toFixed(2));
-      const validResult = Math.max(35, result);
+      const validResult = result + 1;
       coordinates.push(validResult);
     }
     return coordinates;
