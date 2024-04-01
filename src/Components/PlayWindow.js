@@ -3,9 +3,8 @@ import { useState, useEffect } from "react";
 import InputPart from "./InputPart/InputPart";
 import OutputPart from "./OutputPart/OutputPart";
 import MapShow from "./MapShow/MapShow";
-import { fetchUserCity } from "../utils/APIrelated";
+import { fetchUserCity, jsonManipulations } from "../utils/APIrelated";
 import { manageUserCityMessage, manageGiveUp } from "../utils/Managers";
-
 
 function PlayWindow() {
   const [inputCity, setInputCity] = useState("");
@@ -17,7 +16,6 @@ function PlayWindow() {
   const [invalidCity, setInvalidCity] = useState("");
   const [computerResponseCity, setComputerResponseCity] = useState("");
 
-
   const [center, setCenter] = useState([50.1109, 8.6821]);
   const [zoom, setZoom] = useState(11);
 
@@ -27,7 +25,9 @@ function PlayWindow() {
       submittedCities,
       setUserCityMessage,
       setComputerResponseCity,
-      setCenter
+      setCenter,
+      inputCity,
+      setInvalidCity
     );
   }, [submittedCities]);
 
@@ -42,7 +42,8 @@ function PlayWindow() {
       alert("Choose a city");
       setScoreVar(scoreVar);
     } else {
-      manageUserCityMessage(setSubmittedCities, setInvalidCity);
+      fetchUserCity(inputCity, setSubmittedCities, setInvalidCity);
+      // manageUserCityMessage(setSubmittedCities, setInvalidCity, inputCity);
       setSubmittedCities(inputCity);
       setInputCity("");
       handleScore();
@@ -92,7 +93,7 @@ function PlayWindow() {
         handleScore={handleScore}
         scoreVar={scoreVar}
       />
-      
+
       <MapShow
         center={center}
         setCenter={setCenter}

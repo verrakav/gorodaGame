@@ -26,12 +26,14 @@ export const fetchUserCity = async (
   const response = await fetch(url, options);
   const result = await response.text();
   //validates if the input exists
-  if (result.includes(inputCity)) {
-    setSubmittedCities((prev) => [...prev, inputCity]);
-    setInvalidCity("");
-  } else {
-    setInvalidCity(`The city ${inputCity.toUpperCase()} doesn't exist`);
-  }
+  console.log("getting", inputCity);
+  return result;
+  // if (result.includes(inputCity)) {
+  //   setSubmittedCities((prev) => [...prev, inputCity]);
+  //   setInvalidCity("");
+  // } else {
+  //   setInvalidCity(`The city ${inputCity} doesn't exist`);
+  // }
 };
 
 //FIXME: change this to an API call to set computerResponseCity

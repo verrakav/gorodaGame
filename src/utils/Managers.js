@@ -1,11 +1,18 @@
 import { jsonManipulations } from "./APIrelated";
+import { fetchUserCity } from "../utils/APIrelated";
+
 //NOTE: moved from OutputPart
-export const manageUserCityMessage = (
+export const manageUserCityMessage = async (
   submittedCities,
+  setSubmittedCities,
   setUserCityMessage,
   setComputerResponseCity,
-  setCenter
+  setCenter,
+  inputCity,
+  setInvalidCity
 ) => {
+  fetchUserCity(inputCity, setSubmittedCities, setInvalidCity);
+
   //store here for convenience
   const lastCityIdx = submittedCities.length - 1;
   const lastCity = submittedCities[submittedCities.length - 1];
@@ -19,7 +26,15 @@ export const manageUserCityMessage = (
   } else if (hasCityBeenUsed) {
     setUserCityMessage(`${lastCity.toUpperCase()} has been used before`);
   } else {
+    fetchUserCity(inputCity);
     setUserCityMessage(`You say: ${lastCity.toUpperCase()}`);
+    const result = await fetchUserCity(inputCity);
+    if (result.includes(inputCity)) {
+      setSubmittedCities((prev) => [...prev, inputCity]);
+      setInvalidCity("");
+    } else {
+      setInvalidCity(`The city ${inputCity} doesn't exist`);
+    }
     jsonManipulations(
       submittedCities,
       setComputerResponseCity,
