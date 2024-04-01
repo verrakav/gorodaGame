@@ -43,8 +43,6 @@ function PlayWindow() {
       setScoreVar(scoreVar);
     } else {
       fetchUserCity(inputCity, setSubmittedCities, setInvalidCity);
-      // manageUserCityMessage(setSubmittedCities, setInvalidCity, inputCity);
-      setSubmittedCities(inputCity);
       setInputCity("");
       handleScore();
     }

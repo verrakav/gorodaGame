@@ -23,17 +23,17 @@ export const fetchUserCity = async (
       "X-RapidAPI-Host": apiHost
     }
   };
+  //validates if the input exists
   const response = await fetch(url, options);
   const result = await response.text();
-  //validates if the input exists
   console.log("getting", inputCity);
+  if (result.includes(inputCity)) {
+    setSubmittedCities((prev) => [...prev, inputCity]);
+    setInvalidCity("");
+  } else {
+    setInvalidCity(`The city ${inputCity} doesn't exist`);
+  }
   return result;
-  // if (result.includes(inputCity)) {
-  //   setSubmittedCities((prev) => [...prev, inputCity]);
-  //   setInvalidCity("");
-  // } else {
-  //   setInvalidCity(`The city ${inputCity} doesn't exist`);
-  // }
 };
 
 //FIXME: change this to an API call to set computerResponseCity
@@ -60,7 +60,7 @@ export const jsonManipulations = (
       setComputerResponseCity(`I say: ${cityName}`);
       coordinates = [el.lat, el.lng];
       //works
-      // console.log(coordinates);
+      console.log(coordinates);
     }
   });
   setCenter(coordinates);
