@@ -13,6 +13,9 @@ export const fetchUserCity = async (
   inputCity,
   setSubmittedCities,
   setInvalidCity
+  // scoreVar,
+  // setScoreVar
+  // submittedCities
 ) => {
   // const newInput = inputCity.toLowerCase
   const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?types=CITY&minPopulation=20000&namePrefix=${inputCity}&limit=1`;
@@ -28,11 +31,12 @@ export const fetchUserCity = async (
   const result = await response.text();
   console.log("getting", inputCity);
   if (result.includes(inputCity)) {
-    setSubmittedCities((prev) => [...prev, inputCity]);
+    setSubmittedCities(prev => [...prev, inputCity]);
     setInvalidCity("");
   } else {
     setInvalidCity(`The city ${inputCity} doesn't exist`);
   }
+  // console.log(submittedCities);
   return result;
 };
 
@@ -45,7 +49,7 @@ export const jsonManipulations = (
 ) => {
   let coordinates = [];
   let foundCity = false;
-  cities.forEach((el) => {
+  cities.forEach(el => {
     //both vars work
     const lastLetter = lastCity[lastCity.length - 1].toUpperCase();
     const cityName = el.name.toUpperCase();

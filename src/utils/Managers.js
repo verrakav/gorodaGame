@@ -34,7 +34,33 @@ export const manageUserCityMessage = (
       setCenter
     );
   }
+  return { hasCityBeenUsed };
 };
+
+// export const handleScore = (
+//   submittedCities,
+//   setUserCityMessage,
+//   setComputerResponseCity,
+//   setCenter,
+//   inputCity,
+//   scoreVar, setScoreVar,
+//   setInvalidCity
+// ) => {
+//   const { hasCityBeenUsed } = manageUserCityMessage(
+//     submittedCities,
+//     setUserCityMessage,
+//     setComputerResponseCity,
+//     setCenter,
+//     inputCity,
+//     setInvalidCity
+//   );
+
+//   if (!hasCityBeenUsed) {
+//     setScoreVar(prevScore => prevScore + 5);
+//   } else {
+//     setScoreVar(scoreVar);
+//   }
+// };
 
 export const manageGiveUp = (
   setInputCity,
