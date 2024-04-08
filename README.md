@@ -1,6 +1,6 @@
 # Goroda Game
 
-![Alt text](/name-of-gif-file.gif)
+![Alt text](/GorodaShow.gif)
 
 A word-based game where players name cities based on the last letter of the previous city.
 
