@@ -1,18 +1,11 @@
 import { jsonManipulations } from "./APIrelated";
-// import { fetchUserCity } from "../utils/APIrelated";
 
-//NOTE: moved from OutputPart
 export const manageUserCityMessage = (
   submittedCities,
-  // setSubmittedCities,
   setUserCityMessage,
   setComputerResponseCity,
   setCenter
-  // inputCity,
-  // setInvalidCity
 ) => {
-  // fetchUserCity(inputCity, setSubmittedCities, setInvalidCity);
-
   //store here for convenience
   const lastCityIdx = submittedCities.length - 1;
   const lastCity = submittedCities[submittedCities.length - 1];
@@ -34,6 +27,7 @@ export const manageUserCityMessage = (
       setCenter
     );
   }
+  return { hasCityBeenUsed };
 };
 
 export const manageGiveUp = (

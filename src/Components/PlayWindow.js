@@ -1,17 +1,17 @@
 import "./PlayWindow.css";
 import { useState, useEffect } from "react";
+import { fetchUserCity } from "../utils/APIrelated";
+import { manageUserCityMessage, manageGiveUp } from "../utils/Managers";
 import InputPart from "./InputPart/InputPart";
 import OutputPart from "./OutputPart/OutputPart";
 import MapShow from "./MapShow/MapShow";
-import { fetchUserCity } from "../utils/APIrelated";
-import { manageUserCityMessage, manageGiveUp } from "../utils/Managers";
 
 function PlayWindow() {
   const [inputCity, setInputCity] = useState("");
   const [submittedCities, setSubmittedCities] = useState([]);
   const [userCityMessage, setUserCityMessage] = useState("");
 
-  const [scoreVar, setScoreVar] = useState(0);
+  const [scoreVar, setScoreVar] = useState(-5);
 
   const [invalidCity, setInvalidCity] = useState("");
   const [computerResponseCity, setComputerResponseCity] = useState("");
@@ -21,7 +21,7 @@ function PlayWindow() {
 
   useEffect(() => {
     //NOTE: does the core game logic
-    manageUserCityMessage(
+    const { hasCityBeenUsed } = manageUserCityMessage(
       submittedCities,
       setUserCityMessage,
       setComputerResponseCity,
@@ -29,6 +29,13 @@ function PlayWindow() {
       inputCity,
       setInvalidCity
     );
+
+    //FIXME: pretty sure it should be here
+    if (!hasCityBeenUsed) {
+      setScoreVar(scoreVar + 5);
+    } else {
+      setScoreVar(scoreVar);
+    }
   }, [submittedCities]);
 
   const handleInputChange = event => {
@@ -44,17 +51,17 @@ function PlayWindow() {
     } else {
       fetchUserCity(inputCity, setSubmittedCities, setInvalidCity);
       setInputCity("");
-      handleScore();
+      // handleScore();
     }
   };
 
-  const handleScore = computerResponseCity => {
-    if (computerResponseCity) {
-      setScoreVar(scoreVar);
-    } else {
-      setScoreVar(scoreVar + 5);
-    }
-  };
+  // const handleScore = invalidCity => {
+  //   if (invalidCity === "") {
+  //     setScoreVar(scoreVar);
+  //   } else {
+  //     setScoreVar(scoreVar + 5);
+  //   }
+  // };
 
   const removeInvalidCityMessage = () => setInvalidCity("");
 
@@ -88,7 +95,7 @@ function PlayWindow() {
         handleInputChange={handleInputChange}
         handleUserCity={handleUserCity}
         invalidCity={invalidCity}
-        handleScore={handleScore}
+        // handleScore={handleScore}
         scoreVar={scoreVar}
       />
 
