@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import InputPart from "./InputPart/InputPart";
 import OutputPart from "./OutputPart/OutputPart";
 import MapShow from "./MapShow/MapShow";
-import { fetchUserCity, jsonManipulations } from "../utils/APIrelated";
+import { fetchUserCity } from "../utils/APIrelated";
 import { manageUserCityMessage, manageGiveUp } from "../utils/Managers";
 
 function PlayWindow() {
@@ -31,16 +31,16 @@ function PlayWindow() {
     );
   }, [submittedCities]);
 
-  const handleInputChange = (event) => {
+  const handleInputChange = event => {
     setInputCity(event.target.value);
   };
 
-  const handleUserCity = (event) => {
+  const handleUserCity = event => {
     event.preventDefault();
     //TODO: fix edge cases
     if (!inputCity || inputCity.length < 4) {
       alert("Choose a city");
-      setScoreVar(scoreVar);
+      // setScoreVar(scoreVar);
     } else {
       fetchUserCity(inputCity, setSubmittedCities, setInvalidCity);
       setInputCity("");
@@ -48,8 +48,8 @@ function PlayWindow() {
     }
   };
 
-  const handleScore = (invalidCity) => {
-    if (invalidCity) {
+  const handleScore = computerResponseCity => {
+    if (computerResponseCity) {
       setScoreVar(scoreVar);
     } else {
       setScoreVar(scoreVar + 5);

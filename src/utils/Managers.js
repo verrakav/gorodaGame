@@ -26,7 +26,6 @@ export const manageUserCityMessage = (
   } else if (hasCityBeenUsed) {
     setUserCityMessage(`${lastCity.toUpperCase()} has been used before`);
   } else {
-    // fetchUserCity(inputCity);
     setUserCityMessage(`You say: ${lastCity.toUpperCase()}`);
     jsonManipulations(
       submittedCities,
