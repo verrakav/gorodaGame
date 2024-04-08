@@ -74,7 +74,7 @@ export const manageGiveUp = (
   setInputCity("");
   setSubmittedCities([]);
   setInvalidCity("");
-  setScoreVar(0);
+  setScoreVar(-5);
   setComputerResponseCity("");
   alert(`Congrats! Your score is: ${scoreVar}`);
   setCenter([50.1109, 8.6821]);
